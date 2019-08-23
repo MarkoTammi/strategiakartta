@@ -1,0 +1,2 @@
+# strategiakartta
+Strategiakartta
