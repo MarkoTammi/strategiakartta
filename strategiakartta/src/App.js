@@ -2,52 +2,77 @@
 
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css'; 
-import text from './Txt';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-function App() {
+// Components
+import HeroElement from "./components/HeroElement"
+import GenGuide from "./components/GenGuide"
+import Phase1 from "./components/Phase1"
+import Buttons from "./components/Buttons"
+import Footer from "./components/Footer"
 
-    // Set language
-    const lang = "fi";
+
+const App = () => {
+
+    const [phase, setPhase] = useState(0)
+    const [lang, setLang] = useState('fi')
 
 
-  return (
-    <div>
-
-    <HeroElement text={text} lang={lang}/>
-
-    <Footer text={text} lang={lang}/> 
-
-    </div>
-
-     
-  )
-}
-
-// Component to display the hero / jumbotron element
-const HeroElement = (props) =>{
-  console.log("HeroElement - props :". props)
-  return (
-      <div className="jumbotron jumbotron-fluid">
-        <div className="container">
-          <h1 className="display-5 text-center">{props.text[props.lang][1001]}</h1>
-          <p className="lead text-center">{props.text[props.lang][1002]}</p>
-        </div>
-      </div>
-  )
-}
-
-// Component to display the footer
-const Footer = (props) => {
-  const footerStyle = {
-      color: 'green',
-      fontStyle: 'italic',
-      fontSize: '0.8em'
+    // Event handler for "back" button
+    const handlerBackwards = () => {
+      console.log('handlerBack')
+      if (phase > 0) {
+        setPhase(phase - 1)
+      } else {
+        console.log('phase is already 0')
+      }
     }
 
-  return (
-      <h6 style={footerStyle}>{props.text[props.lang][1003]}</h6>
-  )
+    // Event handler for "forward" button
+    const handlerForward = () => {
+      console.log('handlerForward')
+      if (phase < 1) {
+        setPhase(phase + 1)
+      } else {
+        console.log('phase is already 1')
+      }
+    }
+
+const displayPhase = () => {
+  switch (phase) {
+      case 0:
+        return (
+          <>
+            <HeroElement lang={lang} />
+            <GenGuide lang={lang} />
+          </>
+        )
+      case 1:
+        return (
+          <>
+            <Phase1 lang={lang} />
+          </>
+        )
+  }
 }
+
+
+    return (
+      <div>
+
+        {/* display phase specific content */}
+        {displayPhase()}
+
+        <Buttons 
+          handlerBackwards={handlerBackwards}
+          handlerForward={handlerForward}
+          />
+        <Footer lang={lang} />
+      </div>  
+    )
+}
+
+
 export default App;
+
