@@ -1,7 +1,7 @@
 // Text for Phase 1 component
 
-const text = {
-    fi: {
+const optionsPhase1Txt = {
+    10: {
         1020: "Liikevaihdon kasvattaminen",
         1021: "Liikevoiton kasvattaminen",
         1022: "Markkinaosuuden kasvattaminen",
@@ -16,10 +16,6 @@ const text = {
         1031: "Oman työllisyyden turmaaminen",
         1032: "Muu, mikä?", 
     },
-
-    en: {
-        1001: "Eng text missing"
-    }
 }
 
-export default text
+export default optionsPhase1Txt

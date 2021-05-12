@@ -1,4 +1,5 @@
-// MarkoT Strategiakartta App.js
+
+// Strategiakartta App.js
 
 import React, { useState, useEffect } from 'react';
 import './App.css';
@@ -6,18 +7,24 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 // Components
-import HeroElement from "./components/HeroElement"
-import GenGuide from "./components/GenGuide"
+import Phase0 from "./components/Phase0"
 import Phase1 from "./components/Phase1"
-import Buttons from "./components/Buttons"
 import Footer from "./components/Footer"
 
 
 const App = () => {
 
-    const [phase, setPhase] = useState(0)
-    const [lang, setLang] = useState('fi')
+    // State definitions
 
+    const [phase, setPhase] = useState(0)
+
+/*     Version mean
+          10 = yksityinen 
+          11 = test eng
+ */    
+    const [version, setVersion] = useState(10)
+
+    // End of State definitions
 
     // Event handler for "back" button
     const handlerBackwards = () => {
@@ -31,7 +38,7 @@ const App = () => {
 
     // Event handler for "forward" button
     const handlerForward = () => {
-      console.log('handlerForward')
+      //console.log('handlerForward')
       if (phase < 1) {
         setPhase(phase + 1)
       } else {
@@ -44,16 +51,22 @@ const displayPhase = () => {
       case 0:
         return (
           <>
-            <HeroElement lang={lang} />
-            <GenGuide lang={lang} />
+            <Phase0
+              handlerForward={handlerForward}
+              version={version}
+              />
           </>
         )
       case 1:
         return (
-          <>
-            <Phase1 lang={lang} />
-          </>
+            <Phase1 
+              version={version}
+              handlerBackwards={handlerBackwards}
+              handlerForward={handlerForward}
+              />
         )
+        default:
+            console.log("Phase selection switch - case error")
   }
 }
 
@@ -64,11 +77,7 @@ const displayPhase = () => {
         {/* display phase specific content */}
         {displayPhase()}
 
-        <Buttons 
-          handlerBackwards={handlerBackwards}
-          handlerForward={handlerForward}
-          />
-        <Footer lang={lang} />
+        <Footer version={version} />
       </div>  
     )
 }

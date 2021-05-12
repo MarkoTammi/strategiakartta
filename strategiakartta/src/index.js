@@ -1,4 +1,4 @@
-// MarkoT - Strategiakartta
+// Strategiakartta
 
 
 import React from 'react';

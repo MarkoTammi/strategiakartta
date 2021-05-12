@@ -1,22 +1,25 @@
 // General guide component
 
 import React from "react"
-import genText from "./kehityskartta-gen-txt"
+import text from "../txtFiles/strategiakarttaGenGxt"
+import Container from "react-bootstrap/Container"
 
 
 const GenGuide = (props) => {
 
     return (
         <div>
-            <h5>{genText[props.lang][1100]}</h5>
-            <p>{genText[props.lang][1101]}</p>
-            <p>{genText[props.lang][1102]}</p>
-            <p>{genText[props.lang][1103]}</p>
-            <p>{genText[props.lang][1104]}</p>
-            <p>{genText[props.lang][1105]}</p>
-            <p>{genText[props.lang][1106]}</p>
-            <p>{genText[props.lang][1107]}</p>
-            <p>{genText[props.lang][1108]}</p>
+        <Container>
+            <h5>{text[props.version][1100]}</h5>
+            <p>{text[props.version][1101]}</p>
+            <p>{text[props.version][1102]}</p>
+            <p>{text[props.version][1103]}</p>
+            <p>{text[props.version][1104]}</p>
+            <p>{text[props.version][1105]}</p>
+            <p>{text[props.version][1106]}</p>
+            <p>{text[props.version][1107]}</p>
+            <p>{text[props.version][1108]}</p>
+        </Container>
         </div>
     )
 

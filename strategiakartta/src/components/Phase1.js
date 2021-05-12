@@ -2,24 +2,38 @@
 
 import React from "react"
 
-import genTxt from "./kehityskartta-gen-txt"
-import phase1TxT from "./phase1-txt"
+// components
+import HeroElement from "../components/HeroElement"
+
+// Bootstrap component
+import Container from "react-bootstrap/Container"
+
+// text files
+import phase1Txt from "../txtFiles/phase1Txt"
+import optionsPhase1Txt from "../txtFiles/optionsPhase1Txt"
 
 // Component to include
 import OneOption from "./OneOption"
 
 
 const Phase1 = (props) => {
-  
+
     return (
         <div>
-            <h5>{genTxt[props.lang][1001]}</h5>
-            <p>{genTxt[props.lang][1002]}</p>
-            <p>{genTxt[props.lang][1008]}</p>
-            <p>{genTxt[props.lang][1009]}</p>
-            <p>{genTxt[props.lang][1010]}</p>
-            
-            <OneOption />
+
+            <HeroElement
+                headerTxt={phase1Txt[props.version][1001]}
+                subHeaderTxt={phase1Txt[props.version][1002]} />
+
+            <Container>
+
+                <p>{phase1Txt[props.version][1003]}</p>
+                <p>{phase1Txt[props.version][1004]}</p>
+                <p>{phase1Txt[props.version][1005]}</p>
+
+                
+
+            </Container>
 
         </div>
     )
