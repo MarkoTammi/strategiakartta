@@ -8,7 +8,7 @@
 
 const QuestionOptionsTxt = {
     10: {
-        MapTarget : [
+        MapTarget: [
             {
                 id: "00",
                 q: "Liikevaihdon kasvattaminen",
@@ -58,7 +58,7 @@ const QuestionOptionsTxt = {
                 q: "Muu, mikä?",
             }
         ],
-        MapCustomer : [
+        MapCustomer: [
             {
                 id: "00",
                 q: "Kilpailukykyinen hinta",
@@ -120,101 +120,93 @@ const QuestionOptionsTxt = {
                 q: "Muu mikä?",
             }
         ],
-        MapProcess : [            
-        {
-            id: "00",
-            q: "Asiakkauuden hallinta",
-        },
-        {
-            id: "01",
-            q: "Markkinointi",
-        },
-        {
-            id: "02",
-            q: "Yritysbrändin vahvistaminen",
-        },
-        {
-            id: "03",
-            q: "Myynti",
-        },
-        {
-            id: "04",
-            q: "Tuotano",
-        },
-        {
-            id: "05",
-            q: "Alihankinta ja ostot",
-        },
-        {
-            id: "06",
-            q: "Logistiikka, varasto ja jakelu",
-        },
-        {
-            id: "07",
-            q: "Huoltotoiminta",
-        },
-        {
-            id: "08",
-            q: "Laatujärjestelmät",
-        },
-        {
-            id: "09",
-            q: "Aineettomat oikeudet (IPR)",
-        },
-        {
-            id: "10",
-            q: "Yhteistyöverkostot, kumppanuudet",
-        },
-        {
-            id: "11",
-            q: "Asiakaspalvelu",
-        },
-        {
-            id: "12",
-            q: "Palvelu- ja/tai tuotekehitys",
-        },
-        {
-            id: "13",
-            q: "Henkilöstöhallinto (työsuhde, työterveys jne)",
-        },
-        {
-            id: "14",
-            q: "Henkilöstön johtaminen (tavoiteet, esimies-alaiskeskustelu jne)",
-        },
-        {
-            id: "15",
-            q: "Tietohallinto",
-        },
-        {
-            id: "16",
-            q: "Liiketoimintaan liittyvän tiedon hyödyntäminen",
-        },
-        {
-            id: "17",
-            q: "Taloushallinto ja -raportointi",
-        },
-        {
-            id: "18",
-            q: "Yritysvastuullisuus",
-        },
-        {
-            id: "19",
-            q: "Ympäristövastuullisuus",
-        },
-        {
-            id: "20",
-            q: "Muu mikä?",
-        },
-        {
-            id: "21",
-            q: "Muu mikä?",
-        },
-        {
-            id: "22",
-            q: "Muu mikä?",
-        },
+        MapProcess: [
+            {
+                id: "00",
+                q: "Asiakkauuden hallinta",
+            },
+            {
+                id: "01",
+                q: "Markkinointi",
+            },
+            {
+                id: "02",
+                q: "Yritysbrändin vahvistaminen",
+            },
+            {
+                id: "03",
+                q: "Myynti",
+            },
+            {
+                id: "04",
+                q: "Tuotano",
+            },
+            {
+                id: "05",
+                q: "Alihankinta ja ostot",
+            },
+            {
+                id: "06",
+                q: "Logistiikka, varasto ja jakelu",
+            },
+            {
+                id: "07",
+                q: "Huoltotoiminta",
+            },
+            {
+                id: "08",
+                q: "Laatujärjestelmät",
+            },
+            {
+                id: "09",
+                q: "Aineettomat oikeudet (IPR)",
+            },
+            {
+                id: "10",
+                q: "Yhteistyöverkostot, kumppanuudet",
+            },
+            {
+                id: "11",
+                q: "Asiakaspalvelu",
+            },
+            {
+                id: "12",
+                q: "Palvelu- ja/tai tuotekehitys",
+            },
+            {
+                id: "13",
+                q: "Henkilöstöhallinto (työsuhde, työterveys jne)",
+            },
+            {
+                id: "14",
+                q: "Henkilöstön johtaminen (tavoiteet, esimies-alaiskeskustelu jne)",
+            },
+            {
+                id: "15",
+                q: "Tietohallinto",
+            },
+            {
+                id: "16",
+                q: "Liiketoimintaan liittyvän tiedon hyödyntäminen",
+            },
+            {
+                id: "17",
+                q: "Taloushallinto ja -raportointi",
+            },
+            {
+                id: "18",
+                q: "Yritysvastuullisuus",
+            },
+            {
+                id: "19",
+                q: "Ympäristövastuullisuus",
+            },
+            {
+                id: "20",
+                q: "Muu mikä?",
+            },
         ],
-        MapResources : [
+        MapResources: [
             {
                 id: "00",
                 q: "Strategiajohtaminen",

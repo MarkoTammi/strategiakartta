@@ -7,7 +7,7 @@ export const flowControl = {
         2: "MapCustomer",
         3: "MapProcess",
         4: "MapResources",
-        5: "Ready"
+        5: "SendPDF",
     },
 
     11: {

@@ -4,6 +4,9 @@
 import React from "react"
 import Jumbotron from "react-bootstrap/Jumbotron"
 
+// color control
+import color from "../services/color"
+
 
 const HeroElement = (props) =>{
 
@@ -15,7 +18,7 @@ const HeroElement = (props) =>{
 
   return (
      <>
-      <Jumbotron style={jumboStyle}>
+      <Jumbotron style={{ backgroundColor: `${color[props.pageName]}`, marginTop: '-5px' }}>
           <h3>{props.headerTxt}</h3>
           <p>{props.subHeaderTxt}</p>
       </Jumbotron>

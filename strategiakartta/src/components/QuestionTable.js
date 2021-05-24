@@ -29,10 +29,10 @@ const QuestionTable = (props) => {
     const [ shortTxt, setShortTxt ] = useState('')
     const [ radio, setRadio ] = useState(0)
 
-    const handlerInputShort = (e, id) => {
+/*     const handlerInputShort = (e, id) => {
         console.log('handlerInputShort' + e.target.value + id)
         setShortTxt(e.target.value)
-    }
+    } */
 
     const handlerRadio = (event) => {
         console.log('handlerRadio - ' + event)
@@ -43,9 +43,9 @@ const QuestionTable = (props) => {
         <div>
 
 
-            <Row style={{ backgroundColor: `${color[props.pageName]}`, height: 35 }}>
-                <Col>{mapPageTxt[props.version][props.pageName][1000]}</Col>
-                <Col>{mapPageTxt[props.version][props.pageName][1010]}</Col>
+            <Row style={{ backgroundColor: `${color[props.pageName]}`, height: 45, padding: "13px", margin: "0 0 20px" }}>
+                <Col md="auto"><h5>{mapPageTxt[props.version][props.pageName][1000]}</h5></Col>
+                <Col>{mapPageTxt[props.version]["MapGen"][1010]}</Col>
             </Row>
 
            {mapOptionsTxt[props.version][props.pageName].map((question) =>
@@ -53,7 +53,7 @@ const QuestionTable = (props) => {
 
                     <Col>{question.q}</Col>
 
-                    <Col>
+                    <Col xs>
                         <Form>
                             <Form.Group>
                                 <Form.Check onSubmit={ handlerRadio } inline name={question.q} type='radio' id={`${question.id}-5`} />
@@ -67,7 +67,9 @@ const QuestionTable = (props) => {
                     <Col>
                         <Form>
                             <div className="form-group">
-                                <input onChange={(e) => handlerInputShort(e, question.id)} value={shortTxt} type="text" className="form-control" placeholder="Kirjoita max 50 merkin muistiinpano" />
+                                {/* <input onChange={(e) => props.handlerAnswer(e, question.id)} value={props.answer[props.versio][props.pageName][question.id][shortTxt]} type="text" className="form-control" placeholder="Kirjoita max 50 merkin muistiinpano" /> */}
+                                <input onChange={(e) => props.handlerAnswer(e, question.id)} type="text" className="form-control" placeholder="Kirjoita max 50 merkin muistiinpano" />
+
                             </div>
                         </Form>
                     </Col>

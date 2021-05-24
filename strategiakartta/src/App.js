@@ -1,7 +1,7 @@
 
 // Strategiakartta App.js
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -11,6 +11,7 @@ import GuideStart from "./components/GuideStart"
 import MapPage from "./components/MapPage"
 //import MapCustomer from "./components/MapCustomer"
 import Footer from "./components/Footer"
+import SendPDF from "./components/SendPDF"
 
 // Page flow control
 import flowControl from "./services/flowControl"
@@ -41,6 +42,9 @@ const App = () => {
     setPageName(flowControl[version][page])
   })
 
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0)
+});
 
   // Event handler for "back" button
   const handlerBackwards = () => {
@@ -60,20 +64,34 @@ const App = () => {
   }
 
   // Event handler to record and update the Map radio button and short notice answers
-  const handlerAnswer = () => {
-    console.log('handlerAnswer')
+  const handlerAnswer = (e, questionId) => {
+    const shortTxt = e.target.value
+    const obj = []
+    obj.push([{ id : questionId, note : shortTxt }])
+    console.log('handlerAnswer obj - ' + obj[0])
+   // const test = [version.pageName.[{Id : questionId, short : shortTxt}]
+
+/*     const newTxt = [version][pageName][questionId][shortTxt] */
+    //setAnswers( ...answers, obj) 
   }
 
 
+/*   const handlerInputShort = (e, id) => {
+    console.log('handlerInputShort' + e.target.value + id)
+    setShortTxt(e.target.value)
+} */
+
   const displayPage = () => {
-    if (pageName === "MapTarget" || pageName === "MapCustomer" || 
-        pageName === "MapProcess" || pageName === "MapResources") {
+    if (pageName === "MapTarget" || pageName === "MapCustomer" ||
+      pageName === "MapProcess" || pageName === "MapResources") {
       return (
         <MapPage
           version={version}
           handlerBackwards={handlerBackwards}
           handlerForward={handlerForward}
           pageName={pageName}
+          answers={answers}
+          handlerAnswer={handlerAnswer}
         />
       )
     }
@@ -86,20 +104,29 @@ const App = () => {
         />
       )
     }
+    if (pageName === "SendPDF") {
+      return (
+        <SendPDF
+          version={version}
+          handlerBackwards={handlerBackwards}
+          pageName={pageName}
+        />
+      )
+    }
   }
 
 
 
-return (
-  <div>
 
-    {/* display page specific content */}
-    {displayPage()}
+  return (
+    <div>
 
+      {/* display page specific content */}
+      {displayPage()}
 
-    <Footer version={version} />
-  </div>
-)
+      <Footer version={version} />
+    </div>
+  )
 }
 
 

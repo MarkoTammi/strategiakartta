@@ -1,6 +1,7 @@
 // Kehityskartta Phase 1 component
 
-import React from "react"
+
+import React, {useLayoutEffect} from "react"
 
 // components
 import HeroElement from "./HeroElement"
@@ -18,14 +19,17 @@ import buttonTxt from "../txtFiles/buttonTxt"
 
 
 
+
 const mapTarget = (props) => {
+
 
     return (
         <div>
 
             <HeroElement
                 headerTxt={mapPageTxt[props.version][props.pageName][1001]}
-                subHeaderTxt={mapPageTxt[props.version][props.pageName][1002]} />
+                subHeaderTxt={mapPageTxt[props.version][props.pageName][1002]}
+                pageName={props.pageName} />
 
             <Container>
 
@@ -36,6 +40,8 @@ const mapTarget = (props) => {
                 <QuestionTable 
                     version={props.version}
                     pageName={props.pageName}
+                    answers={props.answers}
+                    handlerAnswer={props.handlerAnswer}
                     />
 
                 <Row className="justify-content-md-center">
