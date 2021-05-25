@@ -68,7 +68,7 @@ const QuestionTable = (props) => {
                         <Form>
                             <div className="form-group">
                                 {/* <input onChange={(e) => props.handlerAnswer(e, question.id)} value={props.answer[props.versio][props.pageName][question.id][shortTxt]} type="text" className="form-control" placeholder="Kirjoita max 50 merkin muistiinpano" /> */}
-                                <input onChange={(e) => props.handlerAnswer(e, question.id)} type="text" className="form-control" placeholder="Kirjoita max 50 merkin muistiinpano" />
+                                <input onChange={(e) => props.handlerAnswer(e, question)} type="text" className="form-control" placeholder="Kirjoita max 50 merkin muistiinpano" />
 
                             </div>
                         </Form>

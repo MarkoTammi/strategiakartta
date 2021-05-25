@@ -12,50 +12,62 @@ const QuestionOptionsTxt = {
             {
                 id: "00",
                 q: "Liikevaihdon kasvattaminen",
+                note : ""
             },
             {
                 id: "01",
                 q: "Markkinaosuuden kasvattaminen",
+                note : ""
             },
             {
                 id: "02",
                 q: "Markkina-alueen laajentaminen kotimaassa",
+                note : ""
             },
             {
                 id: "03",
                 q: "Markkina-alueen laajentaminen ulkomailla",
+                note : ""
             },
             {
                 id: "04",
                 q: "Uusien asiakkaiden saaminen",
+                note : ""
             },
             {
                 id: "05",
                 q: "Toiminnan fokuksen terävöittäminen",
+                note : ""
             },
             {
                 id: "06",
                 q: "Uuden tuotteen tai palvelun julkistus",
+                note : ""
             },
             {
                 id: "07",
                 q: "Yrityksen omistusjärjestelyt",
+                note : ""
             },
             {
                 id: "08",
                 q: "Toiminnan supistaminen",
+                note : ""
             },
             {
                 id: "09",
                 q: "Toiminnan ulkoistaminen",
+                note : ""
             },
             {
                 id: "10",
                 q: "Oman työllisyyden turmaaminen",
+                note : ""
             },
             {
                 id: "11",
                 q: "Muu, mikä?",
+                note : ""
             }
         ],
         MapCustomer: [

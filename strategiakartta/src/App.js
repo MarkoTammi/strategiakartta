@@ -31,7 +31,8 @@ const App = () => {
   const [pageName, setPageName] = useState(flowControl[version][0])
 
   // [Map]
-  const [answers, setAnswers] = useState([])
+  const t = Array(11).fill({})
+  const [answers, setAnswers] = useState(t)
 
 
   // End of State definitions
@@ -64,15 +65,18 @@ const App = () => {
   }
 
   // Event handler to record and update the Map radio button and short notice answers
-  const handlerAnswer = (e, questionId) => {
+  const handlerAnswer = (e, question) => {
     const shortTxt = e.target.value
-    const obj = []
-    obj.push([{ id : questionId, note : shortTxt }])
-    console.log('handlerAnswer obj - ' + obj[0])
-   // const test = [version.pageName.[{Id : questionId, short : shortTxt}]
-
-/*     const newTxt = [version][pageName][questionId][shortTxt] */
-    //setAnswers( ...answers, obj) 
+    let answer = [...answers]
+    let ans = {...answers[parseInt(question.id)]}
+    ans.note = shortTxt
+    ans.id = question.id
+    ans.q = question.q
+    console.log("ans - " + ans)
+    answer[parseInt(question.id)] = ans
+    setAnswers(answer)
+    //console.log(answer[0][note])
+    //setAnswers([parseInt(question.id)].{ id : question.id, q : question.q , note : shortTxt })
   }
 
 
