@@ -22,54 +22,71 @@ import color from "../services/color"
 
 
 
-
 const QuestionTable = (props) => {
 
-    //console.log("QuestionTable component")
-    const [ shortTxt, setShortTxt ] = useState('')
-    const [ radio, setRadio ] = useState(0)
+    // Display short note
+    const displayNote = (question, answers) => {
+        let answersTemp = [...answers]
+        var index = answersTemp.findIndex(x => x.q === question.q)
+        if (index === -1) {
+            // Answer is not found in State
+            return ""
+        } else {
+            // Answer is found in State
+            return answersTemp[index].note
+        }
+    }
 
-/*     const handlerInputShort = (e, id) => {
-        console.log('handlerInputShort' + e.target.value + id)
-        setShortTxt(e.target.value)
-    } */
+    // Display radio value
+    const displayRadioValue = (question, answers) => {
+        console.log("displayRadioValue", question)
+        let answersTemp = [...answers]
+        var index = answersTemp.findIndex(x => x.q === question.q)
+        console.log("question.q ", question.q)
+        console.log("answersTemp[index].q ", answersTemp[index])
 
-    const handlerRadio = (event) => {
-        console.log('handlerRadio - ' + event)
-        setRadio(event.target.value)
+        if (index != -1 && question.q === answersTemp[index].q) {
+            // Answer is not found in State
+            return "checked"
+        } else {
+            // Answer is found in State
+            return ""
+        }
     }
 
     return (
         <div>
-
 
             <Row style={{ backgroundColor: `${color[props.pageName]}`, height: 45, padding: "13px", margin: "0 0 20px" }}>
                 <Col md="auto"><h5>{mapPageTxt[props.version][props.pageName][1000]}</h5></Col>
                 <Col>{mapPageTxt[props.version]["MapGen"][1010]}</Col>
             </Row>
 
-           {mapOptionsTxt[props.version][props.pageName].map((question) =>
-                <Row key={question.id}>
+            {mapOptionsTxt[props.version][props.pageName].map((question) =>
+                <Row key={question.q}>
 
                     <Col>{question.q}</Col>
 
                     <Col xs>
-                        <Form>
-                            <Form.Group>
-                                <Form.Check onSubmit={ handlerRadio } inline name={question.q} type='radio' id={`${question.id}-5`} />
-                                <Form.Check inline name={question.q} type='radio' id={`${question.id}-6`} />
-                                <Form.Check inline name={question.q} type='radio' id={`${question.id}-7`} />
-                                <Form.Check inline name={question.q} type='radio' id={`${question.id}-8`} />
-                            </Form.Group>
-                        </Form>
+                        <div className="form-check form-check-inline" >
+                            <input className="form-check-input" checked={displayRadioValue(question, props.answers)} type="radio" name={question.q} value="1" onChange={e => props.handlerRadioButton(e, question, props.answers)} />
+                        </div>
+                        <div className="form-check form-check-inline">
+                            <input className="form-check-input" checked={displayRadioValue(question, props.answers)} type="radio" name={question.q} value="2" onChange={e => props.handlerRadioButton(e, question,props.answers)} />
+                        </div>
+                        <div className="form-check form-check-inline">
+                            <input className="form-check-input" checked={displayRadioValue(question, props.answers)} type="radio" name={question.q} value="3" onChange={e => props.handlerRadioButton(e, question, props.answers)} />
+                        </div>
+                        <div className="form-check form-check-inline">
+                            <input className="form-check-input" checked={displayRadioValue(question, props.answers)} type="radio" name={question.q} value="4" onChange={e => props.handlerRadioButton(e, question, props.answers)} />
+                        </div>
                     </Col>
 
                     <Col>
                         <Form>
                             <div className="form-group">
-                                {/* <input onChange={(e) => props.handlerAnswer(e, question.id)} value={props.answer[props.versio][props.pageName][question.id][shortTxt]} type="text" className="form-control" placeholder="Kirjoita max 50 merkin muistiinpano" /> */}
-                                <input onChange={(e) => props.handlerAnswer(e, question)} type="text" className="form-control" placeholder="Kirjoita max 50 merkin muistiinpano" />
-
+                                <input onChange={(e) => props.handlerShortNote(e, question)} type="text" className="form-control"
+                                    placeholder="Kirjoita max 50 merkin muistiinpano" value={displayNote(question, props.answers)} />
                             </div>
                         </Form>
                     </Col>
@@ -83,8 +100,8 @@ const QuestionTable = (props) => {
 }
 
 export default QuestionTable
-            
-    
+
+
 {/*             <Row>
                 <Form.Group>
                     <OverlayTrigger overlay={<Tooltip id={`kalle`}>Ei kehitettävää</Tooltip>}>

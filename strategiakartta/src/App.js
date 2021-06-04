@@ -29,11 +29,7 @@ const App = () => {
 
   const [page, setPage] = useState(0)
   const [pageName, setPageName] = useState(flowControl[version][0])
-
-  // [Map]
-  const t = Array(11).fill({})
-  const [answers, setAnswers] = useState(t)
-
+  const [answers, setAnswers] = useState([])
 
   // End of State definitions
 
@@ -43,9 +39,10 @@ const App = () => {
     setPageName(flowControl[version][page])
   })
 
+  // Render page always to top
   useLayoutEffect(() => {
     window.scrollTo(0, 0)
-});
+  });
 
   // Event handler for "back" button
   const handlerBackwards = () => {
@@ -64,26 +61,51 @@ const App = () => {
     setPage(page + 1)
   }
 
-  // Event handler to record and update the Map radio button and short notice answers
-  const handlerAnswer = (e, question) => {
+  // Event handler to record short notice answers
+  const handlerShortNote = (e, question) => {
     const shortTxt = e.target.value
-    let answer = [...answers]
-    let ans = {...answers[parseInt(question.id)]}
+    let answersTemp = [...answers]
+    let ans = {}
+    ans.phase = question.phase
     ans.note = shortTxt
     ans.id = question.id
     ans.q = question.q
-    console.log("ans - " + ans)
-    answer[parseInt(question.id)] = ans
-    setAnswers(answer)
-    //console.log(answer[0][note])
-    //setAnswers([parseInt(question.id)].{ id : question.id, q : question.q , note : shortTxt })
+    var index = answersTemp.findIndex(x => x.q === ans.q)
+
+    if (index === -1) {
+      // Answer is not found in State
+      answersTemp[answersTemp.length] = ans
+      setAnswers(answersTemp)
+
+    } else {
+      // Answer is found in State
+      answersTemp[index] = ans
+      setAnswers(answersTemp)
+    }
   }
 
+  // Event handler to recors radio button answer
+  const handlerRadioButton = (e, question) => {
+    let answersTemp = [...answers]
+    let ans = {}
+    ans.prio = e.target.value
+    ans.phase = question.phase
+    ans.note = question.note
+    ans.id = question.id
+    ans.q = question.q
+    var index = answersTemp.findIndex(x => x.q === ans.q)
 
-/*   const handlerInputShort = (e, id) => {
-    console.log('handlerInputShort' + e.target.value + id)
-    setShortTxt(e.target.value)
-} */
+    if (index === -1) {
+      // Answer is not found in State
+      answersTemp[answersTemp.length] = ans
+      setAnswers(answersTemp)
+    } else {
+      // Answer is found in State
+      answersTemp[index] = ans
+      setAnswers(answersTemp)
+    }
+  }
+
 
   const displayPage = () => {
     if (pageName === "MapTarget" || pageName === "MapCustomer" ||
@@ -95,7 +117,8 @@ const App = () => {
           handlerForward={handlerForward}
           pageName={pageName}
           answers={answers}
-          handlerAnswer={handlerAnswer}
+          handlerShortNote={handlerShortNote}
+          handlerRadioButton={handlerRadioButton}
         />
       )
     }
@@ -118,8 +141,6 @@ const App = () => {
       )
     }
   }
-
-
 
 
   return (

@@ -51,17 +51,18 @@ const mapTarget = (props) => {
                 <p>{mapPageTxt[props.version][props.pageName][1005]}</p>
             </Container>
             {/* {displaySelected()} */}
-            <Selected
+{/*             <Selected
                     version={props.version}
                     pageName={props.pageName}
                     answers={props.answers}
-                />
+                /> */}
             <Container>
                 <QuestionTable
                     version={props.version}
                     pageName={props.pageName}
                     answers={props.answers}
-                    handlerAnswer={props.handlerAnswer}
+                    handlerShortNote={props.handlerShortNote}
+                    handlerRadioButton={props.handlerRadioButton}
                 />
 
                 <Row className="justify-content-md-center">
