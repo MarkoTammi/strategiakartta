@@ -38,20 +38,26 @@ const QuestionTable = (props) => {
     }
 
     // Display radio value
-    const displayRadioValue = (question, answers) => {
-        console.log("displayRadioValue", question)
+    const displayRadioValue = (question, answers, value) => {
+        //console.log("displayRadioValue  ")
         let answersTemp = [...answers]
         var index = answersTemp.findIndex(x => x.q === question.q)
-        console.log("question.q ", question.q)
-        console.log("answersTemp[index].q ", answersTemp[index])
-
-        if (index != -1 && question.q === answersTemp[index].q) {
-            // Answer is not found in State
-            return "checked"
-        } else {
-            // Answer is found in State
+        if (index === -1) {
+            // Answer is not found in Answers State
             return ""
+        } else {
+            // Answer is found in Answers State
+            if (value == answersTemp[index].prio) {
+                return "checked"
+            } else {
+                return ""
+            }
         }
+    }
+
+    const formSubmit = (event) => {
+        event.preventDefault();
+        console.log("formSubmit", event.target)
     }
 
     return (
@@ -68,18 +74,24 @@ const QuestionTable = (props) => {
                     <Col>{question.q}</Col>
 
                     <Col xs>
-                        <div className="form-check form-check-inline" >
-                            <input className="form-check-input" checked={displayRadioValue(question, props.answers)} type="radio" name={question.q} value="1" onChange={e => props.handlerRadioButton(e, question, props.answers)} />
-                        </div>
-                        <div className="form-check form-check-inline">
-                            <input className="form-check-input" checked={displayRadioValue(question, props.answers)} type="radio" name={question.q} value="2" onChange={e => props.handlerRadioButton(e, question,props.answers)} />
-                        </div>
-                        <div className="form-check form-check-inline">
-                            <input className="form-check-input" checked={displayRadioValue(question, props.answers)} type="radio" name={question.q} value="3" onChange={e => props.handlerRadioButton(e, question, props.answers)} />
-                        </div>
-                        <div className="form-check form-check-inline">
-                            <input className="form-check-input" checked={displayRadioValue(question, props.answers)} type="radio" name={question.q} value="4" onChange={e => props.handlerRadioButton(e, question, props.answers)} />
-                        </div>
+                        <form onSubmit={formSubmit}>
+                            <div className="form-check form-check-inline" >
+                                <input className="form-check-input" id="1" value="1" checked={displayRadioValue(question, props.answers, 1)}
+                                    type="radio" name={question.q} onChange={e => props.handlerRadioButton(e, question, props.answers)} />
+                            </div>
+                            <div className="form-check form-check-inline">
+                                <input className="form-check-input" value="2" checked={displayRadioValue(question, props.answers, 2)}
+                                    type="radio" name={question.q} onChange={e => props.handlerRadioButton(e, question, props.answers)} />
+                            </div>
+                            <div className="form-check form-check-inline">
+                                <input className="form-check-input" value="3" checked={displayRadioValue(question, props.answers, 3)}
+                                    type="radio" name={question.q} onChange={e => props.handlerRadioButton(e, question, props.answers)} />
+                            </div>
+                            <div className="form-check form-check-inline">
+                                <input className="form-check-input" value="4" checked={displayRadioValue(question, props.answers, 4)}
+                                    type="radio" name={question.q} onChange={e => props.handlerRadioButton(e, question, props.answers)} />
+                            </div>
+                        </form>
                     </Col>
 
                     <Col>
@@ -101,6 +113,27 @@ const QuestionTable = (props) => {
 
 export default QuestionTable
 
+
+/* 
+<Col xs>
+<div className="form-check form-check-inline" >
+    <input className="form-check-input" id="1" value="1" checked={displayRadioValue(question, props.answers)} 
+    type="radio" name={question.q} onChange={e => props.handlerRadioButton(e, question, props.answers)} />
+</div>
+<div className="form-check form-check-inline">
+    <input className="form-check-input" value="2" checked={displayRadioValue(question, props.answers)} 
+    type="radio" name={question.q} onChange={e => props.handlerRadioButton(e, question,props.answers)} />
+</div>
+<div className="form-check form-check-inline">
+    <input className="form-check-input" value="3" checked={displayRadioValue(question, props.answers)} 
+    type="radio" name={question.q} onChange={e => props.handlerRadioButton(e, question, props.answers)} />
+</div>
+<div className="form-check form-check-inline">
+    <input className="form-check-input" value="4" checked={displayRadioValue(question, props.answers)} 
+    type="radio" name={question.q} onChange={e => props.handlerRadioButton(e, question, props.answers)} />
+</div>
+</Col>
+ */
 
 {/*             <Row>
                 <Form.Group>

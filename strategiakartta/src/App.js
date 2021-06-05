@@ -74,11 +74,13 @@ const App = () => {
 
     if (index === -1) {
       // Answer is not found in State
+      ans.prio = ""
       answersTemp[answersTemp.length] = ans
       setAnswers(answersTemp)
 
     } else {
       // Answer is found in State
+      ans.prio = answersTemp[index].prio
       answersTemp[index] = ans
       setAnswers(answersTemp)
     }
@@ -87,20 +89,24 @@ const App = () => {
   // Event handler to recors radio button answer
   const handlerRadioButton = (e, question) => {
     let answersTemp = [...answers]
+    //console.log("handRadio question : ", question)
     let ans = {}
-    ans.prio = e.target.value
-    ans.phase = question.phase
-    ans.note = question.note
-    ans.id = question.id
     ans.q = question.q
+    ans.prio = e.target.value
     var index = answersTemp.findIndex(x => x.q === ans.q)
 
     if (index === -1) {
       // Answer is not found in State
+      ans.note = ""
+      ans.phase = question.phase
+      ans.id = question.id
       answersTemp[answersTemp.length] = ans
       setAnswers(answersTemp)
     } else {
       // Answer is found in State
+      ans.phase = answersTemp[index].phase
+      ans.note = answersTemp[index].note
+      ans.id = answersTemp[index].id
       answersTemp[index] = ans
       setAnswers(answersTemp)
     }
