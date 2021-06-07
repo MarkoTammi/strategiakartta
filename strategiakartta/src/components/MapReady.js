@@ -1,9 +1,10 @@
-// Ready phase component
+// MapReady phase component
 
 import React from "react"
 
 // components
 import HeroElement from "./HeroElement"
+import Selected from "./Selected"
 
 // Bootstrap component
 import Container from "react-bootstrap/Container"
@@ -17,31 +18,34 @@ import buttonTxt from "../txtFiles/buttonTxt"
 
 
 
-const sendPdf = (props) => {
-    console.log("sendPDF component")
+const mapReady = (props) => {
+    console.log("MapReady component")
 
     return (
         <div>
 
-{/*            <HeroElement
+            {/*            <HeroElement
                  headerTxt={mapPageTxt[props.version][props.pageName][1001]}
                 subHeaderTxt={mapPageTxt[props.version][props.pageName][1002]} /> */}
 
             <Container>
-                <h5>SendPDF page</h5>
-                <p>include email input</p>
-{/*                 <p>{mapPageTxt[props.version][props.pageName][1003]}</p>
+                <h5>MapReady page</h5>
+
+                {/*                 <p>{mapPageTxt[props.version][props.pageName][1003]}</p>
                 <p>{mapPageTxt[props.version][props.pageName][1004]}</p>
                 <p>{mapPageTxt[props.version][props.pageName] [1005]}</p> */}
 
-
+                <Selected
+                    version={props.version}
+                    pageName={props.pageName}
+                    answers={props.answers}/>
 
                 <Row className="justify-content-md-center">
-                    <Col xs>    
+                    <Col xs>
                         <Button className="btn btn-secondary m-2" onClick={props.handlerBackwards}>{buttonTxt[props.version][1001]}</Button>
-                        <Button>Lähetä pdf</Button>
+                        <Button onClick={props.handlerForward}>{buttonTxt[props.version][1002]}</Button>
                     </Col>
-                </Row>    
+                </Row>
 
             </Container>
 
@@ -49,4 +53,4 @@ const sendPdf = (props) => {
     )
 }
 
-export default sendPdf
+export default mapReady

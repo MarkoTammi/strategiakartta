@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // Components
 import GuideStart from "./components/GuideStart"
 import MapPage from "./components/MapPage"
-//import MapCustomer from "./components/MapCustomer"
+import MapReady from "./components/MapReady"
 import Footer from "./components/Footer"
 import SendPDF from "./components/SendPDF"
 
@@ -132,6 +132,17 @@ const App = () => {
       return (
         <GuideStart
           version={version}
+          handlerForward={handlerForward}
+          pageName={pageName}
+        />
+      )
+    }
+    if (pageName === "MapReady") {
+      return (
+        <MapReady
+          answers={answers}
+          version={version}
+          handlerBackwards={handlerBackwards}
           handlerForward={handlerForward}
           pageName={pageName}
         />
