@@ -19,7 +19,7 @@ import buttonTxt from "../txtFiles/buttonTxt"
 
 
 const mapReady = (props) => {
-    console.log("MapReady component")
+    //console.log("MapReady component")
 
     return (
         <div>

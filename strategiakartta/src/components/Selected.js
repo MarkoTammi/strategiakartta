@@ -20,10 +20,10 @@ import color from "../services/color"
 
 
 const selected = (props) => {
-    console.log("Selected component")
+    //console.log("Selected component")
     let answersTemp = props.answers
     let amountPrio4 = []
-    let amountPrio3 = []
+
     //console.log("answersTemp :", answersTemp)
     let allPrio4Phase1 = answersTemp.filter(prio4 => prio4.prio == 4 && prio4.phase == 1)
     //console.log("allPrio4Phase1 : ", allPrio4Phase1)
@@ -36,8 +36,29 @@ const selected = (props) => {
     amountPrio4[3] = allPrio4Phase4.length
     amountPrio4.sort((a, b) => { return b - a })
     let biggestAmountPrio4 = amountPrio4[0]
+    
+    let allPrio4 = []
+    for (let i = 0; i < biggestAmountPrio4; i++) {
+        allPrio4.push([])
+        if (allPrio4Phase2[i] != undefined) {
+            //console.log("TRUE 2")
+            allPrio4[i].push(allPrio4Phase2[i])
+        } else {
+            //console.log("FALSE 2")
+            allPrio4[i].push({})
+        }
+        if (allPrio4Phase1[i] != undefined) {
+            //console.log("TRUE 1")
+            allPrio4[i].push(allPrio4Phase1[i])
+        } else {
+            //console.log("FALSE 1")
+            allPrio4[i].push(allPrio4Phase1[i])
+        }
+    }
+    console.log("allPrio4", allPrio4)
     //console.log("biggest 4 : ", biggestAmountPrio4)
 
+    let amountPrio3 = []
     let allPrio3Phase1 = answersTemp.filter(prio4 => prio4.prio == 3 && prio4.phase == 1)
     amountPrio3[0] = allPrio3Phase1.length
     let allPrio3Phase2 = answersTemp.filter(prio4 => prio4.prio == 3 && prio4.phase == 2)
@@ -52,55 +73,55 @@ const selected = (props) => {
     //console.log("biggest 3 : ", biggestAmountPrio3)
 
 
-    const displayMapPrio4 = () => {
-        console.log("dispalyMapPrio4")
-        let i
-        for (i = 0; parseInt(i) < parseInt(biggestAmountPrio4); i++) {
-            return (
-                <div>
-                    <Row>
-                        {/*                     {toDisplayCardOrNot(i, allPrio4Phase4, amountPrio4)}
-                    {toDisplayCardOrNot(i, allPrio4Phase3, amountPrio4)} */}
-                        {toDisplayCardOrNot(i, allPrio4Phase2, amountPrio4)}
-                        {toDisplayCardOrNot(i, allPrio4Phase1, amountPrio4)}
-                    </Row>
-                </div>
+    const displayMapRow = (oneRowAnswers) => {
+        console.log("displayMapRow : ", oneRowAnswers)
+        return (
+            <div>
+                <Col sm={4}>
+                    {toDisplayCardOrNot(oneRowAnswers[0])}
+                </Col>
+                <Col sm={4}>
+                    {toDisplayCardOrNot(oneRowAnswers[1])}
+                </Col>
+            </div>
+        )
+    }
 
+    const toDisplayCardOrNot = (oneAnswer) => {
+        console.log("toDisplayCardOrNot : ", oneAnswer)
+        if (oneAnswer.q != undefined) {
+            console.log("CARD")
+            return (
+                <div key={getRandomInt()}>
+                    {displayCard(oneAnswer)}
+                </div>
+            )
+        } else {
+            console.log("EMPTY")
+            return (
+                <div key={getRandomInt()}>
+                    {displayEmpty()}
+                </div>
             )
         }
     }
 
-    const toDisplayCardOrNot = (i, phaseAnswers, amountPrio) => {
-        console.log("toDisplayCardOrNot : ", "i : ", i, "phaseAnswers : ", phaseAnswers, "amountPrio : ", amountPrio)
-        if (parseInt(amountPrio[i]) === 0) {
-            console.log("Empty 1")
-            displayEmpty()
-        } else {
-            if (i < parseInt(amountPrio[i])) {
-                displayCard(i, phaseAnswers)
-            } else {
-                displayEmpty()
-                console.log("Empty 2")
-
-            }
-        }
-    }
-
-    const displayCard = (i, phaseAnswers) => {
+    const displayCard = (oneAnswer) => {
         console.log("displayCard")
-        console.log("i : ", i)
-        console.log("phaseAnswers[i].q :", phaseAnswers[i].q)
-        console.log("phaseAnswers[i].note :", phaseAnswers[i].note)
+        console.log("oneAnswer.q :", oneAnswer.q)
+        console.log("oneAnswer.note :", oneAnswer.note)
+        console.log("oneAnswer.phase", oneAnswer.phase)
+        const style = {
+            width: '15rem',
+            backgroundColor: `${color[oneAnswer.phase]}`
+        }
 
         return (
             <div>
-                <p>TESTI</p>
-                <Col>
-                    <Card style={{ width: '15rem', margin: "5px" }}>
-                        <Card.Header style={{ width: '15rem', backgroundColor: color.MapResources }}>{phaseAnswers[i].q}</Card.Header>
-                        <Card.Text>{phaseAnswers[i].note}</Card.Text>
-                    </Card>
-                </Col>
+                <Card style={{ width: '15rem', margin: "5px" }}>
+                    <Card.Header style={style}>{oneAnswer.q}</Card.Header>
+                    <Card.Text>{oneAnswer.note}</Card.Text>
+                </Card>
             </div>
 
         )
@@ -110,38 +131,58 @@ const selected = (props) => {
         console.log("displayEmpty")
         return (
             <div>
-                <Col></Col>
             </div>
         )
     }
 
+    const getRandomInt = () => {
+        return Math.floor(Math.random() * 100000);
+    }
 
     return (
         <div style={{ margin: '20px' }}>
             <Row>
-                <Col style={{ width: '15rem' }}>Resurssit</Col>
-                <Col style={{ width: '15rem' }}>Prosessit</Col>
-                <Col style={{ width: '15rem' }}>Asiakkaiden odotukset</Col>
-                <Col style={{ width: '15rem' }}>Liiketoiminnan tavoitteet</Col>
+                <Col>Resurssit</Col>
+                <Col>Prosessit</Col>
+                <Col>Asiakkaiden odotukset</Col>
+                <Col>Liiketoiminnan tavoitteet</Col>
             </Row>
 
-            {displayMapPrio4()}
+            {/* {displayMapPrio4()} */}
+
+            {allPrio4.map((oneRowAnswers) =>
+                <Row key={getRandomInt()}>
+                    {displayMapRow(oneRowAnswers)}
+                </Row>
+            )}
             <p>Paljon kehitettävää</p>
-            {/*             { answersTemp.map(answer =>
-            <Row key={1}>
-                <Col>
-                    <Card style={{ width: '15rem', margin: "5px"  }}>
-                        <Card.Header style={{ width: '15rem', backgroundColor: color.MapResources }}>{answer.q}</Card.Header>
-                        <Card.Text>{answer.note}</Card.Text>
-                    </Card>
-                </Col>
-            </Row>
-
-            )} */}
-
 
         </div>
     )
 }
 
 export default selected
+
+/*     const displayMapPrio4 = () => {
+        //console.log("dispalyMapPrio4")
+        for (let i = 0; i < biggestAmountPrio4; i++) {
+            //console.log("for : ", i , biggestAmountPrio4)
+            displayMapRow(allPrio4[i])
+        }
+    } */
+
+
+    /*     const toDisplayCardOrNot = (i, phaseAnswers, amountPrio) => {
+                        console.log("toDisplayCardOrNot : ", "i : ", i, "phaseAnswers : ", phaseAnswers, "amountPrio : ", amountPrio)
+            if (amountPrio[i] === 0) {
+                        console.log("Empty 1")
+                displayEmpty()
+            } else {
+                if (i < amountPrio[{
+                        displayCard(i, phaseAnswers)
+                    } else {
+                        displayEmpty()
+                    console.log("Empty 2")
+                }
+            }
+        } */
