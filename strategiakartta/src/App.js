@@ -5,6 +5,12 @@ import React, { useState, useEffect, useLayoutEffect } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+// Bootstrap component
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
+import Card from "react-bootstrap/Card"
+import ListGroup from "react-bootstrap/ListGroup"
+import Container from "react-bootstrap/Container"
 
 // Components
 import GuideStart from "./components/GuideStart"
@@ -167,6 +173,23 @@ const App = () => {
       {displayPage()}
 
       <Footer version={version} />
+
+{/*       <Container>
+        <Row>
+          <Col>
+          jotain
+          </Col>
+          <Col>
+          jotain
+          </Col>
+        <Col>
+          jotain
+          </Col>
+        <Col>
+          jotain
+          </Col>
+        </Row>
+      </Container> */}
     </div>
   )
 }

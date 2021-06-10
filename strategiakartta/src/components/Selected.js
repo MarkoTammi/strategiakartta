@@ -36,10 +36,24 @@ const selected = (props) => {
     amountPrio4[3] = allPrio4Phase4.length
     amountPrio4.sort((a, b) => { return b - a })
     let biggestAmountPrio4 = amountPrio4[0]
-    
+
     let allPrio4 = []
     for (let i = 0; i < biggestAmountPrio4; i++) {
         allPrio4.push([])
+        if (allPrio4Phase4[i] != undefined) {
+            //console.log("TRUE 2")
+            allPrio4[i].push(allPrio4Phase4[i])
+        } else {
+            //console.log("FALSE 2")
+            allPrio4[i].push({})
+        }
+        if (allPrio4Phase3[i] != undefined) {
+            //console.log("TRUE 2")
+            allPrio4[i].push(allPrio4Phase3[i])
+        } else {
+            //console.log("FALSE 2")
+            allPrio4[i].push({})
+        }
         if (allPrio4Phase2[i] != undefined) {
             //console.log("TRUE 2")
             allPrio4[i].push(allPrio4Phase2[i])
@@ -76,14 +90,20 @@ const selected = (props) => {
     const displayMapRow = (oneRowAnswers) => {
         console.log("displayMapRow : ", oneRowAnswers)
         return (
-            <div>
-                <Col sm={4}>
+     <>
+                <Col>
                     {toDisplayCardOrNot(oneRowAnswers[0])}
                 </Col>
-                <Col sm={4}>
+                <Col>
                     {toDisplayCardOrNot(oneRowAnswers[1])}
                 </Col>
-            </div>
+                <Col>
+                    {toDisplayCardOrNot(oneRowAnswers[2])}
+                </Col>
+                <Col>
+                    {toDisplayCardOrNot(oneRowAnswers[3])}
+                </Col>
+       </> 
         )
     }
 
@@ -107,18 +127,19 @@ const selected = (props) => {
     }
 
     const displayCard = (oneAnswer) => {
-        console.log("displayCard")
-        console.log("oneAnswer.q :", oneAnswer.q)
-        console.log("oneAnswer.note :", oneAnswer.note)
-        console.log("oneAnswer.phase", oneAnswer.phase)
+        //console.log("displayCard")
+        //console.log("oneAnswer.q :", oneAnswer.q)
+        //console.log("oneAnswer.note :", oneAnswer.note)
+        //console.log("oneAnswer.phase", oneAnswer.phase)
         const style = {
-            width: '15rem',
             backgroundColor: `${color[oneAnswer.phase]}`
         }
 
         return (
+            // <div style={{width : "200px"}}>
             <div>
-                <Card style={{ width: '15rem', margin: "5px" }}>
+
+                <Card style={{ margin: "5px" }}>
                     <Card.Header style={style}>{oneAnswer.q}</Card.Header>
                     <Card.Text>{oneAnswer.note}</Card.Text>
                 </Card>

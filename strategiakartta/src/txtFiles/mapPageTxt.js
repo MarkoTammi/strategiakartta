@@ -13,9 +13,9 @@ const mapPageTxt = {
             1011: "Liiketoiminnan tavoitteet"
         },
         MapTarget: {
-            1000: "Liiketoiminnan tavoitteet",
-            1001: "Vaihe 1 - Liiketoiminnan tavoitteet",
-            1002: "Mitkä ovat yrityksenne keskeiset liiketoiminnan tavoitteet tällä hetkellä?",
+            1000: "Toiminnan tavoitteet",
+            1001: "Vaihe 1 - Toiminnan tavoitteet",
+            1002: "Mitkä ovat yrityksenne keskeiset toiminnan tavoitteet tällä hetkellä?",
             1003: "Mitä haluat yritykseltä ja miksi yritys on perustettu? Millaisia tulostavoitteita omistajat ja johto ovat yritykselle asettaneet? On ymmärrettävä ne asiat, joista tulos ja tavoitteet syntyvät.",
             1004: "Usein tavoitteet asetetaan euroina tai prosentteina, joilla mitataan tulosta, kasvua tai markkinaosuutta. Lukujen ääreen kannattaa pysähtyä ja miettiä miten tavoitteisiin on mahdollista päästä. Siinä auttaa tavoitteiden priorisointi ja niiden tarkka kuvaus.",
             1005: "Kehittäminen tarkoittaa muutosta. Asia voi olla tärkeä mutta se ei ole kehittämisen kannalta tärkeä jos sitä ei pyritä muuttamaan - lisäämään tai vähentämään.",
