@@ -23,15 +23,18 @@ import buttonTxt from "../txtFiles/buttonTxt"
 const mapTarget = (props) => {
 
 
-    const displaySelected = () => {
-        if (props.pageName === "MapCustomer" ||
-            props.pageName === "MapProcess" || props.pageName === "MapResources") {
+    const displaySelected = (showMap) => {
+        if (showMap == true) {
             return (
+                <>
+                <h5>Vastauksesi tähän mennessä</h5>
                 <Selected
                     version={props.version}
                     pageName={props.pageName}
                     answers={props.answers}
                 />
+                <br/>
+                </>
             )
         }
     }
@@ -49,13 +52,12 @@ const mapTarget = (props) => {
                 <p>{mapPageTxt[props.version][props.pageName][1003]}</p>
                 <p>{mapPageTxt[props.version][props.pageName][1004]}</p>
                 <p>{mapPageTxt[props.version][props.pageName][1005]}</p>
+            
+
+            {displaySelected(props.showMap)} 
+
             </Container>
-            {/* {displaySelected()} */}
-{/*             <Selected
-                    version={props.version}
-                    pageName={props.pageName}
-                    answers={props.answers}
-                /> */}
+
             <Container>
                 <QuestionTable
                     version={props.version}

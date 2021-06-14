@@ -66,7 +66,7 @@ const selected = (props) => {
             allPrio4[i].push(allPrio4Phase1[i])
         } else {
             //console.log("FALSE 1")
-            allPrio4[i].push(allPrio4Phase1[i])
+            allPrio4[i].push({})
         }
     }
     console.log("allPrio4", allPrio4)
@@ -161,49 +161,25 @@ const selected = (props) => {
     }
 
     return (
-        <div style={{ margin: '20px' }}>
-            <Row>
-                <Col>Resurssit</Col>
-                <Col>Prosessit</Col>
-                <Col>Asiakkaiden odotukset</Col>
-                <Col>Liiketoiminnan tavoitteet</Col>
+        <div style={{margin: '20px, 0, 20px', border: '1px solid grey', borderRadius: '5px', padding: '20px' }}>
+            <Row style={{borderBottom: '1px dashed', marginBottom: '20px'}}>
+                <Col className="text-center"><h5>{mapPageTxt[props.version]["MapGen"][1023]}</h5></Col>
+                <Col className="text-center"><h5>{mapPageTxt[props.version]["MapGen"][1022]}</h5></Col>
+                <Col className="text-center"><h5>{mapPageTxt[props.version]["MapGen"][1021]}</h5></Col>
+                <Col className="text-center"><h5>{mapPageTxt[props.version]["MapGen"][1020]}</h5></Col>
             </Row>
-
-            {/* {displayMapPrio4()} */}
 
             {allPrio4.map((oneRowAnswers) =>
                 <Row key={getRandomInt()}>
                     {displayMapRow(oneRowAnswers)}
                 </Row>
             )}
-            <p>Paljon kehitettävää</p>
+            <p style={{textAlign:'center', borderBottom: '1px dashed'}}>Paljon kehitettävää</p>
+
+            <p style={{textAlign:'center', borderBottom: '1px dashed'}}>Melko paljon kehitettävää</p>
 
         </div>
     )
 }
 
 export default selected
-
-/*     const displayMapPrio4 = () => {
-        //console.log("dispalyMapPrio4")
-        for (let i = 0; i < biggestAmountPrio4; i++) {
-            //console.log("for : ", i , biggestAmountPrio4)
-            displayMapRow(allPrio4[i])
-        }
-    } */
-
-
-    /*     const toDisplayCardOrNot = (i, phaseAnswers, amountPrio) => {
-                        console.log("toDisplayCardOrNot : ", "i : ", i, "phaseAnswers : ", phaseAnswers, "amountPrio : ", amountPrio)
-            if (amountPrio[i] === 0) {
-                        console.log("Empty 1")
-                displayEmpty()
-            } else {
-                if (i < amountPrio[{
-                        displayCard(i, phaseAnswers)
-                    } else {
-                        displayEmpty()
-                    console.log("Empty 2")
-                }
-            }
-        } */

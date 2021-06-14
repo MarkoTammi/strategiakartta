@@ -10,7 +10,11 @@ const mapPageTxt = {
             1005: "Kirjoita lyhyt muistiinpano - max 50 merkkiä",
 
             1010: "Arvioi kehittämisen tarve tällä hetkellä",
-            1011: "Liiketoiminnan tavoitteet"
+
+            1020: "Toiminnan tavoitteet",
+            1021: "Asiakkaiden odotukset",
+            1022: "Toiminnan ja prosessien kehitystarpeet",
+            1023: "Henkilöstön osaamisen ja muiden resurssien kehitystarpeet",
         },
         MapTarget: {
             1000: "Toiminnan tavoitteet",
@@ -44,6 +48,16 @@ const mapPageTxt = {
             1004: "Miten hyvin henkilöstö tunteet tavoitteet ja strategian? Miten palkkaus ja palkitsemisjärjestelmä tukee valittua toimintatapaa ja tavoitteita? Onko työnjako selkeä ja tietävätkö henkilöstö ja esimiehet mitä heiltä odotetaan?",
             1005: "Osaamisen ja kehittämisen tulisi tukea sekä valittujen tavoitteiden toteutumista, että henkilöiden ammatillista kasvua. Ovatko kehityskeskustelut käytännön työtä tukevia vai vain tapa, jonka perustelua kukaan ei ymmärrä? Työlle asetettujen tavoitteiden seuranta tulee olla kunnossa, jotta tiedetään missä mennään ja henkilöstö näkee, että asiat ovat oikeasti tärkeitä. Kun ajatuspolku tavoitteista osaamiseen on tehty huolella, osataan myös investoida oikeiden asioiden ja osaamisen kehittämiseen.",
         },
+        MapReady:{
+            1000: "Toiminnan tavoitteet",
+            1001: "Asiakkaiden odotukset",
+            1002: "Toiminnan ja prosessien kehitystarpeet",
+            1003: "Henkilöstön osaamisen ja muiden resurssien kehitystarpeet",
+
+            1010: "Valmis startegiakartta",
+            1011: "Onko tekemäsi strategiakartta ymmärrettävä ja uskottava myös henkilökunnan ja yhteistyökumppaneiden näkökulmasta?",
+            1012: "Voit muokata ja täydentää strategiakarttaa palaamalla edelllisiin vaiheisiin. Yleensä strategiakartta paranee kun priorisoit riittävästi ja hyödynnät lyhyttä muistiinpanokenttää esimerkiksi vastuuhenkilön nimellä ja miten kehitystä eli muutosta mitataan."
+        }
     },
     11: {
         MapGen: {

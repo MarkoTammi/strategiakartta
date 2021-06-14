@@ -60,6 +60,8 @@ const QuestionTable = (props) => {
         console.log("formSubmit", event.target)
     }
 
+
+
     return (
         <div>
 
@@ -71,30 +73,38 @@ const QuestionTable = (props) => {
             {mapOptionsTxt[props.version][props.pageName].map((question) =>
                 <Row key={question.q}>
 
-                    <Col>{question.q}</Col>
+                    <Col xs={4}>{question.q}</Col>
 
                     <Col xs>
                         <form onSubmit={formSubmit}>
                             <div className="form-check form-check-inline" >
-                                <input className="form-check-input" id="1" value="1" checked={displayRadioValue(question, props.answers, 1)}
+                                <input
+                                    data-toggle="tooltip" title={mapPageTxt[props.version]["MapGen"][1001]}
+                                    className="form-check-input" id="1" value="1" checked={displayRadioValue(question, props.answers, 1)}
+                                    type="radio" name={question.q} onChange={e => props.handlerRadioButton(e, question, props.answers)} />
+                            </div>
+
+                            <div className="form-check form-check-inline">
+                                <input
+                                    data-toggle="tooltip" title={mapPageTxt[props.version]["MapGen"][1002]}
+                                    className="form-check-input" value="2" checked={displayRadioValue(question, props.answers, 2)}
+                                    type="radio" name={question.q} onChange={e => props.handlerRadioButton(e, question, props.answers)} />
+                            </div>
+
+                            <div className="form-check form-check-inline">
+                                <input data-toggle="tooltip" title={mapPageTxt[props.version]["MapGen"][1003]}
+                                    className="form-check-input" value="3" checked={displayRadioValue(question, props.answers, 3)}
                                     type="radio" name={question.q} onChange={e => props.handlerRadioButton(e, question, props.answers)} />
                             </div>
                             <div className="form-check form-check-inline">
-                                <input className="form-check-input" value="2" checked={displayRadioValue(question, props.answers, 2)}
-                                    type="radio" name={question.q} onChange={e => props.handlerRadioButton(e, question, props.answers)} />
-                            </div>
-                            <div className="form-check form-check-inline">
-                                <input className="form-check-input" value="3" checked={displayRadioValue(question, props.answers, 3)}
-                                    type="radio" name={question.q} onChange={e => props.handlerRadioButton(e, question, props.answers)} />
-                            </div>
-                            <div className="form-check form-check-inline">
-                                <input className="form-check-input" value="4" checked={displayRadioValue(question, props.answers, 4)}
+                                <input data-toggle="tooltip" title={mapPageTxt[props.version]["MapGen"][1004]}
+                                    className="form-check-input" value="4" checked={displayRadioValue(question, props.answers, 4)}
                                     type="radio" name={question.q} onChange={e => props.handlerRadioButton(e, question, props.answers)} />
                             </div>
                         </form>
                     </Col>
 
-                    <Col>
+                    <Col xs={6}>
                         <Form>
                             <div className="form-group">
                                 <input onChange={(e) => props.handlerShortNote(e, question)} type="text" className="form-control"

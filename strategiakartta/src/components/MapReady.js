@@ -24,26 +24,24 @@ const mapReady = (props) => {
     return (
         <div>
 
-            {/*            <HeroElement
-                 headerTxt={mapPageTxt[props.version][props.pageName][1001]}
-                subHeaderTxt={mapPageTxt[props.version][props.pageName][1002]} /> */}
+            <HeroElement
+                headerTxt={mapPageTxt[props.version][props.pageName][1010]}
+                subHeaderTxt={mapPageTxt[props.version][props.pageName][1011]}
+                pageName={props.pageName} />
 
             <Container>
-                <h5>MapReady page</h5>
-
-                {/*                 <p>{mapPageTxt[props.version][props.pageName][1003]}</p>
-                <p>{mapPageTxt[props.version][props.pageName][1004]}</p>
-                <p>{mapPageTxt[props.version][props.pageName] [1005]}</p> */}
 
                 <Selected
                     version={props.version}
                     pageName={props.pageName}
                     answers={props.answers}/>
+                
+                <p style={{ marginTop: '20px'}}>{mapPageTxt[props.version][props.pageName][1012]}</p>
 
                 <Row className="justify-content-md-center">
                     <Col xs>
                         <Button className="btn btn-secondary m-2" onClick={props.handlerBackwards}>{buttonTxt[props.version][1001]}</Button>
-                        <Button onClick={props.handlerForward}>{buttonTxt[props.version][1002]}</Button>
+                        <Button onClick={props.handlerForward}>{buttonTxt[props.version][1004]}</Button>
                     </Col>
                 </Row>
 

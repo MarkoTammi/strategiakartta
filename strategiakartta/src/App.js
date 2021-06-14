@@ -36,6 +36,7 @@ const App = () => {
   const [page, setPage] = useState(0)
   const [pageName, setPageName] = useState(flowControl[version][0])
   const [answers, setAnswers] = useState([])
+  const [showMap, setShowMap] = useState(false)
 
   // End of State definitions
 
@@ -45,10 +46,10 @@ const App = () => {
     setPageName(flowControl[version][page])
   })
 
-  // Render page always to top
+/*   // Render page always to top
   useLayoutEffect(() => {
     window.scrollTo(0, 0)
-  });
+  }); */
 
   // Event handler for "back" button
   const handlerBackwards = () => {
@@ -64,6 +65,7 @@ const App = () => {
   // Event handler for "forward" button
   const handlerForward = () => {
     // console.log('handlerForward page nro before increment - ' + page)
+    setShowMap(true)
     setPage(page + 1)
   }
 
@@ -131,6 +133,7 @@ const App = () => {
           answers={answers}
           handlerShortNote={handlerShortNote}
           handlerRadioButton={handlerRadioButton}
+          showMap={showMap}
         />
       )
     }
@@ -151,6 +154,7 @@ const App = () => {
           handlerBackwards={handlerBackwards}
           handlerForward={handlerForward}
           pageName={pageName}
+          showMap={showMap}
         />
       )
     }
@@ -174,22 +178,6 @@ const App = () => {
 
       <Footer version={version} />
 
-{/*       <Container>
-        <Row>
-          <Col>
-          jotain
-          </Col>
-          <Col>
-          jotain
-          </Col>
-        <Col>
-          jotain
-          </Col>
-        <Col>
-          jotain
-          </Col>
-        </Row>
-      </Container> */}
     </div>
   )
 }
