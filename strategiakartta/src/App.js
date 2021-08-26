@@ -37,6 +37,8 @@ const App = () => {
   const [pageName, setPageName] = useState(flowControl[version][0])
   const [answers, setAnswers] = useState([])
   const [showMap, setShowMap] = useState(false)
+  const [otherWhat, setOtherWhat] = useState([])
+  const [otherWhatIndex, setOtherWhatIndex] = useState([])
 
   // End of State definitions
 
@@ -46,10 +48,11 @@ const App = () => {
     setPageName(flowControl[version][page])
   })
 
-/*   // Render page always to top
-  useLayoutEffect(() => {
+  // Render page always to top when pageName state is changed
+  useEffect(() => {
     window.scrollTo(0, 0)
-  }); */
+    }, [pageName]) 
+
 
   // Event handler for "back" button
   const handlerBackwards = () => {
@@ -71,6 +74,7 @@ const App = () => {
 
   // Event handler to record short notice answers
   const handlerShortNote = (e, question) => {
+    //console.log(question)
     const shortTxt = e.target.value
     let answersTemp = [...answers]
     let ans = {}
@@ -78,7 +82,7 @@ const App = () => {
     ans.note = shortTxt
     ans.id = question.id
     ans.q = question.q
-    var index = answersTemp.findIndex(x => x.q === ans.q)
+    var index = answersTemp.findIndex(x => x.id === ans.id)
 
     if (index === -1) {
       // Answer is not found in State
@@ -97,11 +101,11 @@ const App = () => {
   // Event handler to recors radio button answer
   const handlerRadioButton = (e, question) => {
     let answersTemp = [...answers]
-    //console.log("handRadio question : ", question)
+    console.log("handRadio question : ", question)
     let ans = {}
     ans.q = question.q
     ans.prio = e.target.value
-    var index = answersTemp.findIndex(x => x.q === ans.q)
+    var index = answersTemp.findIndex(x => x.id === ans.id)
 
     if (index === -1) {
       // Answer is not found in State
@@ -120,6 +124,17 @@ const App = () => {
     }
   }
 
+  // Event handler to record "other what" question / target
+  const handlerOtherWhatTarget = (e, otherWhatOriginal) => {
+    //console.log('handlerOtherWhatTarget', e.target.value)
+    //console.log('handlerOtherWhatTarget', otherWhatOriginal)
+    const otherWhatTarget = e.target.value
+    let answersTemp = [...answers]
+    console.log(answersTemp)
+    let ans = {}
+    ans.q = otherWhatTarget
+
+  }
 
   const displayPage = () => {
     if (pageName === "MapTarget" || pageName === "MapCustomer" ||
@@ -134,6 +149,7 @@ const App = () => {
           handlerShortNote={handlerShortNote}
           handlerRadioButton={handlerRadioButton}
           showMap={showMap}
+          handlerOtherWhatTarget={handlerOtherWhatTarget}
         />
       )
     }

@@ -1,7 +1,8 @@
 
 // Component to display the hero / jumbotron element
 
-import React from "react"
+import React, { useEffect } from 'react';
+
 import Jumbotron from "react-bootstrap/Jumbotron"
 
 // color control

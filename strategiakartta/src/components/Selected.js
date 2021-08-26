@@ -1,9 +1,6 @@
 // Component to show what has been selected
 
-import React, { useLayoutEffect } from "react"
-
-// components
-
+import React, { } from 'react';
 
 // Bootstrap component
 import Row from "react-bootstrap/Row"
@@ -19,14 +16,13 @@ import mapPageTxt from "../txtFiles/mapPageTxt"
 import color from "../services/color"
 
 
-const selected = (props) => {
+const Selected = (props) => {
     //console.log("Selected component")
     let answersTemp = props.answers
+    
+    // Arrange all prio 4 answers
     let amountPrio4 = []
-
-    //console.log("answersTemp :", answersTemp)
     let allPrio4Phase1 = answersTemp.filter(prio4 => prio4.prio == 4 && prio4.phase == 1)
-    //console.log("allPrio4Phase1 : ", allPrio4Phase1)
     amountPrio4[0] = allPrio4Phase1.length
     let allPrio4Phase2 = answersTemp.filter(prio4 => prio4.prio == 4 && prio4.phase == 2)
     amountPrio4[1] = allPrio4Phase2.length
@@ -41,37 +37,29 @@ const selected = (props) => {
     for (let i = 0; i < biggestAmountPrio4; i++) {
         allPrio4.push([])
         if (allPrio4Phase4[i] != undefined) {
-            //console.log("TRUE 2")
             allPrio4[i].push(allPrio4Phase4[i])
         } else {
-            //console.log("FALSE 2")
             allPrio4[i].push({})
         }
         if (allPrio4Phase3[i] != undefined) {
-            //console.log("TRUE 2")
             allPrio4[i].push(allPrio4Phase3[i])
         } else {
-            //console.log("FALSE 2")
             allPrio4[i].push({})
         }
         if (allPrio4Phase2[i] != undefined) {
-            //console.log("TRUE 2")
             allPrio4[i].push(allPrio4Phase2[i])
         } else {
-            //console.log("FALSE 2")
             allPrio4[i].push({})
         }
         if (allPrio4Phase1[i] != undefined) {
-            //console.log("TRUE 1")
             allPrio4[i].push(allPrio4Phase1[i])
         } else {
-            //console.log("FALSE 1")
             allPrio4[i].push({})
         }
     }
-    console.log("allPrio4", allPrio4)
-    //console.log("biggest 4 : ", biggestAmountPrio4)
+    // END - Arrange all prio 4 answers
 
+    // Arrange all prio 3 answers
     let amountPrio3 = []
     let allPrio3Phase1 = answersTemp.filter(prio4 => prio4.prio == 3 && prio4.phase == 1)
     amountPrio3[0] = allPrio3Phase1.length
@@ -81,14 +69,37 @@ const selected = (props) => {
     amountPrio3[2] = allPrio3Phase3.length
     let allPrio3Phase4 = answersTemp.filter(prio4 => prio4.prio == 3 && prio4.phase == 4)
     amountPrio3[3] = allPrio3Phase4.length
-    //console.log("amountPrio3", amountPrio3)
     amountPrio3.sort((a, b) => { return b - a })
     let biggestAmountPrio3 = amountPrio3[0]
-    //console.log("biggest 3 : ", biggestAmountPrio3)
 
+    let allPrio3 = []
+    for (let i = 0; i < biggestAmountPrio3; i++) {
+        allPrio3.push([])
+        if (allPrio3Phase4[i] != undefined) {
+            allPrio3[i].push(allPrio3Phase4[i])
+        } else {
+            allPrio3[i].push({})
+        }
+        if (allPrio3Phase3[i] != undefined) {
+            allPrio3[i].push(allPrio3Phase3[i])
+        } else {
+            allPrio3[i].push({})
+        }
+        if (allPrio3Phase2[i] != undefined) {
+            allPrio3[i].push(allPrio3Phase2[i])
+        } else {
+            allPrio3[i].push({})
+        }
+        if (allPrio3Phase1[i] != undefined) {
+            allPrio3[i].push(allPrio3Phase1[i])
+        } else {
+            allPrio3[i].push({})
+        }
+    }
+    // END - Arrange all prio 3 answers
 
     const displayMapRow = (oneRowAnswers) => {
-        console.log("displayMapRow : ", oneRowAnswers)
+        // console.log("displayMapRow : ", oneRowAnswers)
         return (
      <>
                 <Col>
@@ -108,16 +119,16 @@ const selected = (props) => {
     }
 
     const toDisplayCardOrNot = (oneAnswer) => {
-        console.log("toDisplayCardOrNot : ", oneAnswer)
+        // console.log("toDisplayCardOrNot : ", oneAnswer)
         if (oneAnswer.q != undefined) {
-            console.log("CARD")
+            // console.log("CARD")
             return (
                 <div key={getRandomInt()}>
                     {displayCard(oneAnswer)}
                 </div>
             )
         } else {
-            console.log("EMPTY")
+            // console.log("EMPTY")
             return (
                 <div key={getRandomInt()}>
                     {displayEmpty()}
@@ -149,7 +160,7 @@ const selected = (props) => {
     }
 
     const displayEmpty = () => {
-        console.log("displayEmpty")
+        // console.log("displayEmpty")
         return (
             <div>
             </div>
@@ -174,12 +185,19 @@ const selected = (props) => {
                     {displayMapRow(oneRowAnswers)}
                 </Row>
             )}
+            <br></br>
             <p style={{textAlign:'center', borderBottom: '1px dashed'}}>Paljon kehitettävää</p>
 
-            <p style={{textAlign:'center', borderBottom: '1px dashed'}}>Melko paljon kehitettävää</p>
+            {allPrio3.map((oneRowAnswers) =>
+                <Row key={getRandomInt()}>
+                    {displayMapRow(oneRowAnswers)}
+                </Row>
+            )}
+            <br></br>
+            <p style={{textAlign:'center'}}>Melko paljon kehitettävää</p>
 
         </div>
     )
 }
 
-export default selected
+export default Selected

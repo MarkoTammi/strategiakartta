@@ -1,7 +1,7 @@
 // Kehityskartta phase component
 
 
-import React, { useLayoutEffect } from "react"
+import React, { useLayoutEffect, useEffect } from "react"
 
 // components
 import HeroElement from "./HeroElement"
@@ -19,8 +19,7 @@ import mapPageTxt from "../txtFiles/mapPageTxt"
 import buttonTxt from "../txtFiles/buttonTxt"
 
 
-
-const mapTarget = (props) => {
+const MapTarget = (props) => {
 
 
     const displaySelected = (showMap) => {
@@ -65,6 +64,7 @@ const mapTarget = (props) => {
                     answers={props.answers}
                     handlerShortNote={props.handlerShortNote}
                     handlerRadioButton={props.handlerRadioButton}
+                    handlerOtherWhatTarget={props.handlerOtherWhatTarget}
                 />
 
                 <Row className="justify-content-md-center">
@@ -80,4 +80,4 @@ const mapTarget = (props) => {
     )
 }
 
-export default mapTarget
+export default MapTarget
