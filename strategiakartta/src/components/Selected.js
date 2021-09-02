@@ -6,8 +6,8 @@ import React, { } from 'react';
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Card from "react-bootstrap/Card"
-import ListGroup from "react-bootstrap/ListGroup"
-import Container from "react-bootstrap/Container"
+//import ListGroup from "react-bootstrap/ListGroup"
+//import Container from "react-bootstrap/Container"
 
 // text files
 import mapPageTxt from "../txtFiles/mapPageTxt"
@@ -22,13 +22,13 @@ const Selected = (props) => {
     
     // Arrange all prio 4 answers
     let amountPrio4 = []
-    let allPrio4Phase1 = answersTemp.filter(prio4 => prio4.prio == 4 && prio4.phase == 1)
+    let allPrio4Phase1 = answersTemp.filter(prio4 => parseInt(prio4.prio) === 4 && parseInt(prio4.phase) === 1)
     amountPrio4[0] = allPrio4Phase1.length
-    let allPrio4Phase2 = answersTemp.filter(prio4 => prio4.prio == 4 && prio4.phase == 2)
+    let allPrio4Phase2 = answersTemp.filter(prio4 => parseInt(prio4.prio) === 4 && parseInt(prio4.phase) === 2)
     amountPrio4[1] = allPrio4Phase2.length
-    let allPrio4Phase3 = answersTemp.filter(prio4 => prio4.prio == 4 && prio4.phase == 3)
+    let allPrio4Phase3 = answersTemp.filter(prio4 => parseInt(prio4.prio) === 4 && parseInt(prio4.phase) === 3)
     amountPrio4[2] = allPrio4Phase3.length
-    let allPrio4Phase4 = answersTemp.filter(prio4 => prio4.prio == 4 && prio4.phase == 4)
+    let allPrio4Phase4 = answersTemp.filter(prio4 => parseInt(prio4.prio) === 4 && parseInt(prio4.phase) === 4)
     amountPrio4[3] = allPrio4Phase4.length
     amountPrio4.sort((a, b) => { return b - a })
     let biggestAmountPrio4 = amountPrio4[0]
@@ -36,24 +36,24 @@ const Selected = (props) => {
     let allPrio4 = []
     for (let i = 0; i < biggestAmountPrio4; i++) {
         allPrio4.push([])
-        if (allPrio4Phase4[i] != undefined) {
+        if (allPrio4Phase4[i] !== undefined) {
             allPrio4[i].push(allPrio4Phase4[i])
-        } else {
+            } else {
             allPrio4[i].push({})
         }
-        if (allPrio4Phase3[i] != undefined) {
+        if (allPrio4Phase3[i] !== undefined) {
             allPrio4[i].push(allPrio4Phase3[i])
-        } else {
+            } else {
             allPrio4[i].push({})
         }
-        if (allPrio4Phase2[i] != undefined) {
+        if (allPrio4Phase2[i] !== undefined) {
             allPrio4[i].push(allPrio4Phase2[i])
-        } else {
+            } else {
             allPrio4[i].push({})
         }
-        if (allPrio4Phase1[i] != undefined) {
+        if (allPrio4Phase1[i] !== undefined) {
             allPrio4[i].push(allPrio4Phase1[i])
-        } else {
+            } else {
             allPrio4[i].push({})
         }
     }
@@ -61,13 +61,13 @@ const Selected = (props) => {
 
     // Arrange all prio 3 answers
     let amountPrio3 = []
-    let allPrio3Phase1 = answersTemp.filter(prio4 => prio4.prio == 3 && prio4.phase == 1)
+    let allPrio3Phase1 = answersTemp.filter(prio4 => parseInt(prio4.prio) === 3 && parseInt(prio4.phase) === 1)
     amountPrio3[0] = allPrio3Phase1.length
-    let allPrio3Phase2 = answersTemp.filter(prio4 => prio4.prio == 3 && prio4.phase == 2)
+    let allPrio3Phase2 = answersTemp.filter(prio4 => parseInt(prio4.prio) === 3 && parseInt(prio4.phase) === 2)
     amountPrio3[1] = allPrio3Phase2.length
-    let allPrio3Phase3 = answersTemp.filter(prio4 => prio4.prio == 3 && prio4.phase == 3)
+    let allPrio3Phase3 = answersTemp.filter(prio4 => parseInt(prio4.prio) === 3 && parseInt(prio4.phase) === 3)
     amountPrio3[2] = allPrio3Phase3.length
-    let allPrio3Phase4 = answersTemp.filter(prio4 => prio4.prio == 3 && prio4.phase == 4)
+    let allPrio3Phase4 = answersTemp.filter(prio4 => parseInt(prio4.prio) === 3 && parseInt(prio4.phase) === 4)
     amountPrio3[3] = allPrio3Phase4.length
     amountPrio3.sort((a, b) => { return b - a })
     let biggestAmountPrio3 = amountPrio3[0]
@@ -75,24 +75,24 @@ const Selected = (props) => {
     let allPrio3 = []
     for (let i = 0; i < biggestAmountPrio3; i++) {
         allPrio3.push([])
-        if (allPrio3Phase4[i] != undefined) {
+        if (allPrio3Phase4[i] !== undefined) {
             allPrio3[i].push(allPrio3Phase4[i])
-        } else {
+            } else {
             allPrio3[i].push({})
         }
-        if (allPrio3Phase3[i] != undefined) {
+        if (allPrio3Phase3[i] !== undefined) {
             allPrio3[i].push(allPrio3Phase3[i])
-        } else {
+            } else {
             allPrio3[i].push({})
         }
-        if (allPrio3Phase2[i] != undefined) {
+        if (allPrio3Phase2[i] !== undefined) {
             allPrio3[i].push(allPrio3Phase2[i])
-        } else {
+            } else {
             allPrio3[i].push({})
         }
-        if (allPrio3Phase1[i] != undefined) {
+        if (allPrio3Phase1[i] !== undefined) {
             allPrio3[i].push(allPrio3Phase1[i])
-        } else {
+            } else {
             allPrio3[i].push({})
         }
     }
@@ -120,7 +120,7 @@ const Selected = (props) => {
 
     const toDisplayCardOrNot = (oneAnswer) => {
         // console.log("toDisplayCardOrNot : ", oneAnswer)
-        if (oneAnswer.q != undefined) {
+        if (oneAnswer.q !== undefined) {
             // console.log("CARD")
             return (
                 <div key={getRandomInt()}>

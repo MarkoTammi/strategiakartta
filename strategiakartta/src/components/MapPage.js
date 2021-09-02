@@ -1,7 +1,7 @@
 // Kehityskartta phase component
 
 
-import React, { useLayoutEffect, useEffect } from "react"
+import React, {  } from "react"
 
 // components
 import HeroElement from "./HeroElement"
@@ -21,9 +21,9 @@ import buttonTxt from "../txtFiles/buttonTxt"
 
 const MapTarget = (props) => {
 
-
+    // Diplay selected targets and notes
     const displaySelected = (showMap) => {
-        if (showMap == true) {
+        if (showMap === true) {
             return (
                 <>
                 <h5>Vastauksesi tähän mennessä</h5>
@@ -36,6 +36,13 @@ const MapTarget = (props) => {
                 </>
             )
         }
+    }
+    // Display "back" button if other page than MapTarget 
+    const displayBackwardsButton = () => {
+        if (props.pageName != "MapTarget")
+            return (
+                <Button className="btn btn-secondary m-2" onClick={props.handlerBackwards}>{buttonTxt[props.version][1001]}</Button>
+            )
     }
 
     return (
@@ -62,14 +69,18 @@ const MapTarget = (props) => {
                     version={props.version}
                     pageName={props.pageName}
                     answers={props.answers}
+                    otherWhatAnswers={props.otherWhatAnswers}
+                    setOtherWhatAnswers={props.setOtherWhatAnswers}
                     handlerShortNote={props.handlerShortNote}
                     handlerRadioButton={props.handlerRadioButton}
                     handlerOtherWhatTarget={props.handlerOtherWhatTarget}
+                    findId={props.findId}
+                    newEmptyOtherWhat={props.newEmptyOtherWhat}
                 />
 
                 <Row className="justify-content-md-center">
                     <Col xs>
-                        <Button className="btn btn-secondary m-2" onClick={props.handlerBackwards}>{buttonTxt[props.version][1001]}</Button>
+                        {displayBackwardsButton()}
                         <Button onClick={props.handlerForward}>{buttonTxt[props.version][1002]}</Button>
                     </Col>
                 </Row>

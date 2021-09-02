@@ -10,382 +10,444 @@ const QuestionOptionsTxt = {
     10: {
         MapTarget: [
             {
-                phase: "1",
-                id: "100",
+                phase: 1,
+                id: 100,
                 q: "Liikevaihdon kasvattaminen",
-                note : ""
+                note : "",
+                pageName : "MapTarget",
             },
             {
-                phase: "1",
-                id: "101",
+                phase: 1,
+                id: 101,
                 q: "Markkinaosuuden kasvattaminen",
-                note : ""
+                note : "",
+                pageName : "MapTarget",
             },
             {
-                phase: "1",
-                id: "102",
+                phase: 1,
+                id: 102,
                 q: "Markkina-alueen laajentaminen kotimaassa",
-                note : ""
+                note : "",
+                pageName : "MapTarget",
             },
             {
-                phase: "1",
-                id: "103",
+                phase: 1,
+                id: 103,
                 q: "Markkina-alueen laajentaminen ulkomailla",
-                note : ""
+                note : "",
+                pageName : "MapTarget",
             },
             {
-                phase: "1",
-                id: "104",
+                phase: 1,
+                id: 104,
                 q: "Uusien asiakkaiden saaminen",
-                note : ""
+                note : "",
+                pageName : "MapTarget",
             },
             {
-                phase: "1",
-                id: "105",
+                phase: 1,
+                id: 105,
                 q: "Toiminnan fokuksen terävöittäminen",
-                note : ""
+                note : "",
+                pageName : "MapTarget",
             },
             {
-                phase: "1",
-                id: "106",
+                phase: 1,
+                id: 106,
                 q: "Uuden tuotteen tai palvelun julkistus",
-                note : ""
+                note : "",
+                pageName : "MapTarget",
             },
             {
-                phase: "1",
-                id: "107",
+                phase: 1,
+                id: 107,
                 q: "Yrityksen omistusjärjestelyt",
-                note : ""
+                note : "",
+                pageName : "MapTarget",
             },
             {
-                phase: "1",
-                id: "108",
+                phase: 1,
+                id: 108,
                 q: "Toiminnan supistaminen",
-                note : ""
+                note : "",
+                pageName : "MapTarget",
             },
             {
-                phase: "1",
-                id: "109",
+                phase: 1,
+                id: 109,
                 q: "Toiminnan ulkoistaminen",
-                note : ""
+                note : "",
+                pageName : "MapTarget",
             },
             {
-                phase: "1",
-                id: "110",
+                phase: 1,
+                id: 110,
                 q: "Oman työllisyyden turvaaminen",
-                note : ""
+                note : "",
+                pageName : "MapTarget",
             }
         ],
         MapCustomer: [
             {
-                phase: "2",
-                id: "200",
+                phase: 2,
+                id: 200,
                 q: "Kilpailukykyinen hinta",
-                note : ""
+                note : "",
+                pageName : "MapCustomer",
             },
             {
-                phase: "2",
-                id: "201",
+                phase: 2,
+                id: 201,
                 q: "Toimitusajan nopeus",
-                note : ""
+                note : "",
+                pageName : "MapCustomer",
             },
             {
-                phase: "2",
-                id: "202",
+                phase: 2,
+                id: 202,
                 q: "Toimitusvarmuus",
-                note : ""
+                note : "",
+                pageName : "MapCustomer",
             },
             {
-                phase: "2",
-                id: "203",
+                phase: 2,
+                id: 203,
                 q: "Tasainen laatu",
-                note : ""
+                note : "",
+                pageName : "MapCustomer",
             },
             {
-                phase: "2",
-                id: "204",
+                phase: 2,
+                id: 204,
                 q: "Asiantuntemus",
-                note : ""
+                note : "",
+                pageName : "MapCustomer",
             },
             {
-                phase: "2",
-                id: "205",
+                phase: 2,
+                id: 205,
                 q: "Asiakkaan liiketoiminnan ymmärtäminen",
-                note : ""
+                note : "",
+                pageName : "MapCustomer",
             },
             {
-                phase: "2",
-                id: "206",
+                phase: 2,
+                id: 206,
                 q: "Ammattimainen myyntitoiminta",
-                note : ""
+                note : "",
+                pageName : "MapCustomer",
             },
             {
-                phase: "2",
-                id: "207",
+                phase: 2,
+                id: 207,
                 q: "Innovatiiviset ratkaisut",
-                note : ""
+                note : "",
+                pageName : "MapCustomer",
             },
             {
-                phase: "2",
-                id: "208",
+                phase: 2,
+                id: 208,
                 q: "Asiakaslähtöinen toimitussisältö",
-                note : ""
+                note : "",
+                pageName : "MapCustomer",
             },
             {
-                phase: "2",
-                id: "209",
+                phase: 2,
+                id: 209,
                 q: "Aktiivinen yhteydenpito",
-                note : ""
+                note : "",
+                pageName : "MapCustomer",
             },
             {
-                phase: "2",
-                id: "210",
+                phase: 2,
+                id: 210,
                 q: "Kumppanuus",
-                note : ""
+                note : "",
+                pageName : "MapCustomer",
             },
             {
-                phase: "2",
-                id: "211",
+                phase: 2,
+                id: 211,
                 q: "Joustava palvelu",
-                note : ""
+                note : "",
+                pageName : "MapCustomer",
             },
             {
-                phase: "2",
-                id: "212",
+                phase: 2,
+                id: 212,
                 q: "Kokonaispalvelu",
-                note : ""
+                note : "",
+                pageName : "MapCustomer",
             },
             {
-                phase: "2",
-                id: "213",
+                phase: 2,
+                id: 213,
                 q: "Ympäristövastuullisuus",
-                note : ""
+                note : "",
+                pageName : "MapCustomer",
             }
         ],
         MapProcess: [
             {
-                phase: "3",
-                id: "300",
+                phase: 3,
+                id: 300,
                 q: "Asiakkauuden hallinta",
-                note : ""
+                note : "",
+                pageName : "MapProcess",
             },
             {
-                phase: "3",
-                id: "301",
+                phase: 3,
+                id: 301,
                 q: "Markkinointi",
-                note : ""
+                note : "",
+                pageName : "MapProcess",
             },
             {
-                phase: "3",
-                id: "302",
+                phase: 3,
+                id: 302,
                 q: "Yritysbrändin vahvistaminen",
-                note : ""
+                note : "",
+                pageName : "MapProcess",
             },
             {
-                phase: "3",
-                id: "303",
+                phase: 3,
+                id: 303,
                 q: "Myynti",
-                note : ""
+                note : "",
+                pageName : "MapProcess",
             },
             {
-                phase: "3",
-                id: "304",
+                phase: 3,
+                id: 304,
                 q: "Tuotanto",
-                note : ""
+                note : "",
+                pageName : "MapProcess",
             },
             {
-                phase: "3",
-                id: "305",
+                phase: 3,
+                id: 305,
                 q: "Alihankinta ja ostot",
-                note : ""
+                note : "",
+                pageName : "MapProcess",
             },
             {
-                phase: "3",
-                id: "306",
+                phase: 3,
+                id: 306,
                 q: "Logistiikka, varasto ja jakelu",
-                note : ""
+                note : "",
+                pageName : "MapProcess",
             },
             {
-                phase: "3",
-                id: "307",
+                phase: 3,
+                id: 307,
                 q: "Huoltotoiminta",
-                note : ""
+                note : "",
+                pageName : "MapProcess",
             },
             {
-                phase: "3",
-                id: "308",
+                phase: 3,
+                id: 308,
                 q: "Laatujärjestelmät",
-                note : ""
+                note : "",
+                pageName : "MapProcess",
             },
             {
-                phase: "3",
-                id: "309",
+                phase: 3,
+                id: 309,
                 q: "Aineettomat oikeudet (IPR)",
-                note : ""
+                note : "",
+                pageName : "MapProcess",
             },
             {
-                phase: "3",
-                id: "310",
+                phase: 3,
+                id: 310,
                 q: "Yhteistyöverkostot, kumppanuudet",
-                note : ""
+                note : "",
+                pageName : "MapProcess",
             },
             {
-                phase: "3",
-                id: "311",
+                phase: 3,
+                id: 311,
                 q: "Asiakaspalvelu",
-                note : ""
+                note : "",
+                pageName : "MapProcess",
             },
             {
-                phase: "3",
-                id: "312",
+                phase: 3,
+                id: 312,
                 q: "Palvelu- ja/tai tuotekehitys",
-                note : ""
+                note : "",
+                pageName : "MapProcess",
             },
             {
-                phase: "3",
-                id: "313",
+                phase: 3,
+                id: 313,
                 q: "Henkilöstöhallinto (työsuhde, työterveys jne)",
-                note : ""
+                note : "",
+                pageName : "MapProcess",
             },
             {
-                phase: "3",
-                id: "314",
+                phase: 3,
+                id: 314,
                 q: "Henkilöstön johtaminen (tavoiteet, esimies-alaiskeskustelu jne)",
-                note : ""
+                note : "",
+                pageName : "MapProcess",
             },
             {
-                phase: "3",
-                id: "315",
+                phase: 3,
+                id: 315,
                 q: "Tietohallinto",
-                note : ""
+                note : "",
+                pageName : "MapProcess",
             },
             {
-                phase: "3",
-                id: "316",
+                phase: 3,
+                id: 316,
                 q: "Liiketoimintaan liittyvän tiedon hyödyntäminen",
-                note : ""
+                note : "",
+                pageName : "MapProcess",
             },
             {
-                phase: "3",
-                id: "317",
+                phase: 3,
+                id: 317,
                 q: "Taloushallinto ja -raportointi",
-                note : ""
+                note : "",
+                pageName : "MapProcess",
             },
             {
-                phase: "3",
-                id: "318",
+                phase: 3,
+                id: 318,
                 q: "Yritysvastuullisuus",
-                note : ""
+                note : "",
+                pageName : "MapProcess",
             },
             {
-                phase: "3",
-                id: "319",
+                phase: 3,
+                id: 319,
                 q: "Ympäristövastuullisuus",
-                note : ""
+                note : "",
+                pageName : "MapProcess",
             }
         ],
         MapResources: [
             {
-                phase: "4",
-                id: "400",
+                phase: 4,
+                id: 400,
                 q: "Strategiajohtaminen",
-                note : ""
+                note : "",
+                pageName : "MapResources",
             },
             {
-                phase: "4",
-                id: "401",
+                phase: 4,
+                id: 401,
                 q: "Asiakasymmärrys",
-                note : ""
+                note : "",
+                pageName : "MapResources",
             },
             {
-                phase: "4",
-                id: "402",
+                phase: 4,
+                id: 402,
                 q: "Liiketoimintaosaaminen",
-                note : ""
+                note : "",
+                pageName : "MapResources",
             },
             {
-                phase: "4",
-                id: "403",
+                phase: 4,
+                id: 403,
                 q: "Yrityskulttuuri ja -arvot",
-                note : ""
+                note : "",
+                pageName : "MapResources",
             },
             {
-                phase: "4",
-                id: "404",
+                phase: 4,
+                id: 404,
                 q: "Työyhteisön pelisäännöt",
-                note : ""
+                note : "",
+                pageName : "MapResources",
             },
             {
-                phase: "4",
-                id: "405",
+                phase: 4,
+                id: 405,
                 q: "Yrityksen ammattiosaaminen",
-                note : ""
+                note : "",
+                pageName : "MapResources",
             },
             {
-                phase: "4",
-                id: "406",
+                phase: 4,
+                id: 406,
                 q: "Kansainvälinen osaaminen",
-                note : ""
+                note : "",
+                pageName : "MapResources",
             },
             {
-                phase: "4",
-                id: "407",
+                phase: 4,
+                id: 407,
                 q: "Suorituksen johtaminen",
-                note : ""
+                note : "",
+                pageName : "MapResources",
             },
             {
-                phase: "4",
-                id: "408",
+                phase: 4,
+                id: 408,
                 q: "Toimenkuvien tarkentaminen",
-                note : ""
+                note : "",
+                pageName : "MapResources",
             },
             {
-                phase: "4",
-                id: "409",
+                phase: 4,
+                id: 409,
                 q: "Rekrytointi ja työnantajakuva",
-                note : ""
+                note : "",
+                pageName : "MapResources",
             },
             {
-                phase: "4",
-                id: "410",
+                phase: 4,
+                id: 410,
                 q: "Palkitseminen",
-                note : ""
+                note : "",
+                pageName : "MapResources",
             },
             {
-                phase: "4",
-                id: "411",
+                phase: 4,
+                id: 411,
                 q: "Urasuunnittelu",
-                note : ""
+                note : "",
+                pageName : "MapResources",
             },
             {
-                phase: "4",
-                id: "412",
+                phase: 4,
+                id: 412,
                 q: "Resurssisuunnittelu",
-                note : ""
+                note : "",
+                pageName : "MapResources",
             },
             {
-                phase: "4",
-                id: "413",
+                phase: 4,
+                id: 413,
                 q: "Henkilöstötyytyväisyys",
-                note : ""
+                note : "",
+                pageName : "MapResources",
             },
             {
-                phase: "4",
-                id: "414",
+                phase: 4,
+                id: 414,
                 q: "Tieto- ja viestintätekniikan osaaminen",
-                note : ""
+                note : "",
+                pageName : "MapResources",
             },
             {
-                phase: "4",
-                id: "415",
+                phase: 4,
+                id: 415,
                 q: "Tuotantovälineistö (koneet, järjestelmät, työkalut)",
-                note : ""
+                note : "",
+                pageName : "MapResources",
             },
             {
-                phase: "4",
-                id: "416",
+                phase: 4,
+                id: 416,
                 q: "Tuotanto- ja toimitilat",
-                note : ""
+                note : "",
+                pageName : "MapResources",
             }
         ]
     }

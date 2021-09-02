@@ -1,7 +1,7 @@
 
 // Component to display the hero / jumbotron element
 
-import React, { useEffect } from 'react';
+import React, { } from 'react';
 
 import Jumbotron from "react-bootstrap/Jumbotron"
 
@@ -11,10 +11,10 @@ import color from "../services/color"
 
 const HeroElement = (props) =>{
 
-  const jumboStyle = {
+/*   const jumboStyle = {
     backgroundColor: '#47aeb6',
     marginTop: '-5px'
-  }
+  } */
  
 
   return (

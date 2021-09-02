@@ -3,7 +3,7 @@
 import React from "react"
 
 // components
-import HeroElement from "./HeroElement"
+import Selected from "./Selected"
 
 // Bootstrap component
 import Container from "react-bootstrap/Container"
@@ -12,39 +12,33 @@ import Col from "react-bootstrap/Col"
 import Button from "react-bootstrap/Button"
 
 // text files
-import mapPageTxt from "../txtFiles/mapPageTxt"
+import generalTxt from "../txtFiles/generalTxt"
 import buttonTxt from "../txtFiles/buttonTxt"
 
 
 
 const sendPdf = (props) => {
-    console.log("sendPDF component")
+    //(console.log("sendPDF component")
 
     return (
-        <div>
-
-{/*            <HeroElement
-                 headerTxt={mapPageTxt[props.version][props.pageName][1001]}
-                subHeaderTxt={mapPageTxt[props.version][props.pageName][1002]} /> */}
-
+        <div style={{ margin: "40px" }}>
             <Container>
-                <h5>SendPDF page</h5>
-                <p>include email input</p>
-{/*                 <p>{mapPageTxt[props.version][props.pageName][1003]}</p>
-                <p>{mapPageTxt[props.version][props.pageName][1004]}</p>
-                <p>{mapPageTxt[props.version][props.pageName] [1005]}</p> */}
+                <Selected
+                    version={props.version}
+                    pageName={props.pageName}
+                    answers={props.answers}
+                />
 
-
+                <Col style={{ marginTop: "60px", marginBottom: "20px" }}>
+                    {generalTxt[props.version][1001]}
+                </Col>
 
                 <Row className="justify-content-md-center">
-                    <Col xs>    
+                    <Col xs>
                         <Button className="btn btn-secondary m-2" onClick={props.handlerBackwards}>{buttonTxt[props.version][1001]}</Button>
-                        <Button>Lähetä pdf</Button>
                     </Col>
-                </Row>    
-
+                </Row>
             </Container>
-
         </div>
     )
 }

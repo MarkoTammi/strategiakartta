@@ -10,14 +10,14 @@ const Footer = (props) => {
     const footerStyle = {
         color: '#47aeb6',
         fontStyle: 'italic',
-        fontSize: '0.8em',
+        fontSize: '1em',
         marginTop: '30px',
-        marginBottom: '30px'
+        marginBottom: '90px'
       }
   
     return (
         <Container>
-            <h6 style={footerStyle}>{text[props.version][1001]}</h6>
+            <h5 style={footerStyle}>{text[props.version][1001]}</h5>
         </Container>
     )
 }

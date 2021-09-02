@@ -1,21 +1,21 @@
 // Component to display strategymap questions / options table
 
 
-import React, { useState } from "react"
+import React, { } from "react"
 
-import Table from 'react-bootstrap/Table'
+//import Table from 'react-bootstrap/Table'
 import Form from 'react-bootstrap/Form'
-import InputGroup from 'react-bootstrap/InputGroup'
-import FormControl from 'react-bootstrap/FormControl'
-import OverlayTrigger from 'react-bootstrap/Overlay'
-import Tooltip from 'react-bootstrap/Tooltip'
-import Button from 'react-bootstrap/Button'
+//import InputGroup from 'react-bootstrap/InputGroup'
+//import FormControl from 'react-bootstrap/FormControl'
+//import OverlayTrigger from 'react-bootstrap/Overlay'
+//import Tooltip from 'react-bootstrap/Tooltip'
+//import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-import { faSquare } from "@fortawesome/free-regular-svg-icons"
-import { faCheck } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+//import { faSquare } from "@fortawesome/free-regular-svg-icons"
+//import { faCheck } from "@fortawesome/free-solid-svg-icons"
+//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 // Text files
 import mapOptionsTxt from "../txtFiles/mapOptionsTxt"
@@ -28,69 +28,117 @@ import color from "../services/color"
 
 const QuestionTable = (props) => {
 
-    // Other what option. Same format that fixed question.
-    const otherWhatOriginal = {
-        id: "50",
-        note: "",
-        phase: "",
-        prio: "",
-        q: "otherWhat",
-    }
+    // Display "Other what" rows
+    const displayOtherWhat = (pageName, otherWhatAnswers, setOtherWhatAnswers, newEmptyOtherWhat) => {
+        //console.log('START - displayOtherWhat')
+/* 
+        const findPhase = (pageName) => {
+            switch (pageName) {
+                case "MapTarget":
+                  return 1
+                  break
+                case "MapCustomer":
+                  return 2
+                  break
+                case "MapProcess":
+                  return 3
+                  break
+                case "MapResources":
+                  return 4
+                  break
+            }
+        } */
 
-    // Study if "other what" has been selected in a phase. Return TRUE = is radio clicked and note 
-    const otherWhatSelected = (pageName, answers) => {
-        //console.log('otherWhatSelected', pageName, answers)
+        let otherWhatAnswersTemp = [...otherWhatAnswers]
+        let otherWhatToDisplay = []
+         
+        // otherWhatToDisplay = otherWhatAnswersTemp.filter(answer => answer.pageName === pageName)
+        otherWhatToDisplay = otherWhatAnswersTemp.filter(answer => answer.pageName === pageName)
+        //console.log('otherWhatToDisplay', otherWhatToDisplay)
 
-        //no selection or note
-        return false
-    }
+        let emptyRowInd = otherWhatToDisplay.findIndex(row => row.mod === false)
+        //console.log('emptyRowInd', emptyRowInd)
 
-    // Display "Other what" rows if selected
-    const displayOtherWhat = (pageName, answers) => {
-        //console.log('displayOtherWhat')
-        //console.log('answers', answers)
-        //console.log('pageName', pageName)
+        if (emptyRowInd === -1) {
 
-        if (otherWhatSelected(answers)) {
-            return (
-                <Row>
-                    Jotain on valittu
-                </Row>
-            )
-        } else {
-            return 
+            newEmptyOtherWhat()
+
+            /* const otherWhatOriginal = {
+                id : props.findId(),
+                q : "",
+                note : "",
+                prio : 0,
+                mod : false,
+                phase: findPhase(pageName),
+                pageName : pageName
+            }
+            otherWhatToDisplay.push(otherWhatOriginal)
+            setOtherWhatAnswers(otherWhatToDisplay) */
         }
-    }
+        
+        //console.log('otherWhatToDisplay' ,otherWhatToDisplay)
 
-    // Display allways empty "Other what" row at the end of 'table'
-    const displayAllwaysEmptyOtherWhat = () => {
-        console.log('displayAöllwaysEmptyOtherWhat')
+
         return (
-            <Row>
-                <Col>
-                    <Form>
-                        <div className="form-group">
-                            <input type="text" className="form-control"
-                                placeholder="Muu mikä? Voit kirjoittaa tähän oman vaihtoehdon" />
-                        </div>
-                    </Form>
-                </Col>
-                <Col xs={6}>
-                    <Form>
-                        <div className="form-group">
-                            <input type="text" className="form-control"
-                                placeholder="Kirjoita max 50 merkin muistiinpano" />
-                        </div>
-                    </Form>
-                </Col>
-            </Row>
+            <div>
+                {otherWhatToDisplay.map((answer) =>
+                    <Row key={answer.id}>
+                        <Col xs={4}>
+                            <Form>
+                                <div className="form-group">
+                                    <input onChange={(e) => props.handlerOtherWhatTarget(e, answer)}
+                                        type="text" className="form-control"
+                                        placeholder="Voit kirjoittaa tähän oman vaihtoehdon"
+                                        value={displayOtherWhatQuestion(answer, props.answers)} />
+                                </div>
+                            </Form>
+                        </Col>
+
+                        <form onSubmit={formSubmit}>
+                            <div className="form-check form-check-inline" >
+                                <input
+                                    data-toggle="tooltip" title={mapPageTxt[props.version]["MapGen"][1001]}
+                                    className="form-check-input" value="1" checked={displayRadioValue(answer, props.answers, 1)}
+                                    type="radio" name={answer.id} onChange={e => props.handlerRadioButton(e, answer, props.answers)} />
+                            </div>
+                            <div className="form-check form-check-inline">
+                                <input data-toggle="tooltip" title={mapPageTxt[props.version]["MapGen"][1003]}
+                                    className="form-check-input" value="3" checked={displayRadioValue(answer, props.answers, 3)}
+                                    type="radio" name={answer.id} onChange={e => props.handlerRadioButton(e, answer, props.answers)} />
+                            </div>
+
+                            <div className="form-check form-check-inline">
+                                <input data-toggle="tooltip" title={mapPageTxt[props.version]["MapGen"][1004]}
+                                    className="form-check-input" value="4" checked={displayRadioValue(answer, props.answers, 4)}
+                                    type="radio" name={answer.id} onChange={e => props.handlerRadioButton(e, answer, props.answers)} />
+                            </div>
+                        </form>
+
+                        <Col xs={6}>
+                            <Form>
+                                <div className="form-group">
+                                    <input onChange={(e) => props.handlerShortNote(e, answer)}
+                                        type="text" className="form-control"
+                                        placeholder={mapPageTxt[props.version]["MapGen"][1005]}
+                                        value={displayNote(answer, props.answers)} />
+                                </div>
+                            </Form>
+                        </Col>
+
+                    </Row>
+                )}
+            </div>
         )
     }
 
+
     // Display short note
     const displayNote = (question, answers) => {
+        //console.log('displayNote - question', question)
+        //console.log('displayNote - answer', answers)
+
         let answersTemp = [...answers]
-        var index = answersTemp.findIndex(x => x.q === question.q)
+        let index = answersTemp.findIndex(x => x.id === question.id)
         if (index === -1) {
             // Answer is not found in State
             return ""
@@ -111,13 +159,25 @@ const QuestionTable = (props) => {
             return ""
         } else {
             // Answer is found in Answers State
-            console.log('answersTemp[index]',answersTemp[index])
-            console.log('value', value)
-            if (value == answersTemp[index].prio) {
+            if (parseInt(value) === parseInt(answersTemp[index].prio)) {
                 return "checked"
             } else {
                 return ""
             }
+        }
+    }
+
+    // Display otherWhat target/question/answer
+    const displayOtherWhatQuestion = (question, answers) => {
+        //console.log('START - displayOtherWhatQuestion')
+        let answersTemp = [...answers]
+        let index = answersTemp.findIndex(x => x.id === question.id)
+        if (index === -1) {
+            // Answer is not found in State
+            return ""
+        } else {
+            // Answer is found in State
+            return answersTemp[index].q
         }
     }
 
@@ -140,51 +200,6 @@ const QuestionTable = (props) => {
                 <Row key={question.id}>
 
                     <Col xs={4}>{question.q}</Col>
-
-                    {/*                     <Col xs>
-                        <label htmlFor={`${question.q}_3`}>
-                            <input type="radio" name={question.q} value="3" id={`${question.q}_3`}
-                                checked={displayRadioValue(question, props.answers, 3)} />
-                            <span className="fa-stack">
-                                <FontAwesomeIcon icon={faSquare} className="fa-stack-2x" style={{ color: '#a3cfd6' }} />
-                                <FontAwesomeIcon icon={faCheck} className="fa-stack-1x" style={{ color: '#47aeb6' }} />
-                            </span>
-                        </label>
-                    </Col>
-                    <Col xs>
-                        <label htmlFor={`${question.q}_4`}>
-                            <input type="radio" name={question.q} value="4" id={`${question.q}_3`}
-                                checked={displayRadioValue(question, props.answers, 3)} />
-                            <span className="fa-stack">
-                                <FontAwesomeIcon icon={faSquare} className="fa-stack-2x" style={{ color: '#47aeb6' }} />
-                                <FontAwesomeIcon icon={faCheck} className="fa-stack-1x" style={{ color: '#47aeb6' }} />
-                            </span>
-                        </label>
-                    </Col> */}
-
-
-                    {/*             <div>
-                            <input type="radio" name={question.q} value="3" id={`${question.q}_3`} 
-                                checked={displayRadioValue(question, props.answers, 3)}/>
-                            <label htmlFor={`${question.q}_3`}>
-                                <span>
-                                    <FontAwesomeIcon icon={faSquare} className="fa-stack-2x" style={{ color: '#a3cfd6' }} />
-                                    <FontAwesomeIcon icon={faCheck} className="fa-stack-1x" style={{ color: '#47aeb6' }} />
-                                </span>
-                            </label>
-                        </div>
-                        <div>
-                            <input type="radio" name={question.q} value="4" id={`${question.q}_4`} 
-                                checked={displayRadioValue(question, props.answers, 4)}/>
-                            <label htmlFor={`${question.q}_4`}>
-                                <span>
-                                    <FontAwesomeIcon icon={faSquare} className="fa-stack-2x" style={{ color: '#47aeb6' }} />
-                                    <FontAwesomeIcon icon={faCheck} className="fa-stack-1x" style={{ color: '#47aeb6' }} />
-                                </span>
-                            </label>
-                        </div> */}
-
-
 
                     <form onSubmit={formSubmit}>
                         <div className="form-check form-check-inline" >
@@ -221,51 +236,8 @@ const QuestionTable = (props) => {
                 </Row>
             )}
 
-            {displayOtherWhat(props.pageName, props.answers)}
+            {displayOtherWhat(props.pageName, props.otherWhatAnswers, props.setOtherWhatAnswers, props.newEmptyOtherWhat)}
 
-            {/* Display always one empty "Other what" at the end */}
-            <Row>
-                <Col xs={4}>
-                    <Form>
-                        <div className="form-group">
-                            <input 
-                                onChange={(e) => props.handlerOtherWhatTarget(e, otherWhatOriginal)}
-                                type="text" className="form-control"
-                                placeholder="Muu mikä? Voit kirjoittaa oman tavoitteen."
-                             />
-                        </div>
-                    </Form>
-                </Col>
-
-                <form onSubmit={formSubmit}>
-                    <div className="form-check form-check-inline" >
-                        <input
-                            data-toggle="tooltip" title={mapPageTxt[props.version]["MapGen"][1001]}
-                            className="form-check-input" id="1" value="1"
-                            type="radio" name={otherWhatOriginal.q} />
-                    </div>
-                    <div className="form-check form-check-inline">
-                        <input data-toggle="tooltip" title={mapPageTxt[props.version]["MapGen"][1003]}
-                            className="form-check-input" value="3"
-                            type="radio" name={otherWhatOriginal.q} />
-                    </div>
-                    <div className="form-check form-check-inline">
-                        <input data-toggle="tooltip" title={mapPageTxt[props.version]["MapGen"][1004]}
-                            className="form-check-input" value="4"
-                            type="radio" name={otherWhatOriginal.q} />
-                    </div>
-                </form>
-
-                <Col xs={6}>
-                    <Form>
-                        <div className="form-group">
-                            <input type="text" className="form-control"
-                                placeholder={mapPageTxt[props.version]["MapGen"][1005]} />
-                        </div>
-                    </Form>
-                </Col>
-            </Row>
-            {/* End of last Other what */}
 
         </div>
     )
