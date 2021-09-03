@@ -38,6 +38,9 @@ const mapReady = (props) => {
                 
                 <p style={{ marginTop: '20px'}}>{mapPageTxt[props.version][props.pageName][1012]}</p>
 
+                {/* <p style={{}}>{mapPageTxt[props.version][props.pageName][1013]}</p> */}
+
+
                 <Row className="justify-content-md-center">
                     <Col xs>
                         <Button className="btn btn-secondary m-2" onClick={props.handlerBackwards}>{buttonTxt[props.version][1001]}</Button>
