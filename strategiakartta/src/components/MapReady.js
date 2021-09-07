@@ -18,7 +18,7 @@ import buttonTxt from "../txtFiles/buttonTxt"
 
 
 
-const mapReady = (props) => {
+const MapReady = (props) => {
     //console.log("MapReady component")
 
     return (
@@ -54,4 +54,4 @@ const mapReady = (props) => {
     )
 }
 
-export default mapReady
+export default MapReady

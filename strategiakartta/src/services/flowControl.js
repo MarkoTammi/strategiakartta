@@ -2,18 +2,14 @@
 
 export const flowControl = {
     10: {
-        0: "MapTarget",
+/*         0: "MapTarget",
         1: "MapCustomer",
         2: "MapProcess",
         3: "MapResources",
         4: "MapReady",
-        5: "SendPDF"
-/*         0: "StartGuide",
-        1: "MapTarget",
-        2: "MapCustomer",
-        3: "MapProcess",
-        4: "MapResources",
-        5: "SendPDF", */
+        5: "SendPDF" */
+        0: "MapResources",
+        1: "SendPDF"
     },
 
     11: {

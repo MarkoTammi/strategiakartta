@@ -132,7 +132,7 @@ const App = () => {
   const handlerForward = () => {
     // console.log('handlerForward page nro before increment - ' + page)
     let numberOfAnswers = howManyAnswersInPhase()
-    console.log('howManyAnswersInPhase', numberOfAnswers)
+    //console.log('howManyAnswersInPhase', numberOfAnswers)
     if (numberOfAnswers === 0 && 
           (pageName === "MapTarget" || pageName === "MapCustomer" ||
           pageName === "MapProcess" || pageName === "MapResources")) {
