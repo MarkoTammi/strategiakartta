@@ -254,13 +254,13 @@ const App = () => {
   // Event handler to record "other what" question / target
   const handlerOtherWhatTarget = (e, answer) => {
     
-    console.log('START - handlerOtherWhatTarget')
+    // console.log('START - handlerOtherWhatTarget')
 
     const otherWhatTarget = e.target.value
     let answersTemp = [...answers]
     let otherWhatAnswersTemp = [...otherWhatAnswers]
-    console.log('handlerOtherWhatTarget - e.target.value :', e.target.value)
-    console.log('handlerOtherWhatTarget - answer :', answer)
+    //console.log('handlerOtherWhatTarget - e.target.value :', e.target.value)
+    //console.log('handlerOtherWhatTarget - answer :', answer)
     
     let ans = {}
     ans.id = answer.id

@@ -76,9 +76,128 @@ const getRandomInt = () => {
     return Math.floor(Math.random() * 100000);
 }
 
-// Build document here
+
+const toDisplayCardOrNotPDF = (oneAnswer, styleTh, backgroundColor, styleTd) => {
+    console.log('START displayCard')
+    if (oneAnswer.q !== undefined) {
+        // console.log("CARD")
+        return (
+            <div key={getRandomInt()}>
+                {displayCardPDF(oneAnswer, styleTh, backgroundColor, styleTd)}
+            </div>
+        )
+    } else {
+        // console.log("EMPTY")
+        return (
+            <div key={getRandomInt()}>
+                {displayEmptyCardPDF()}
+            </div>
+        )
+    }
+}
+
+const displayCardPDF = (oneAnswer, styleTh, backgroundColor, styleTd) => {
+    return (
+        <View>
+            <View style={[styleTh, { backgroundColor: backgroundColor }]}><Text>{oneAnswer.q}</Text></View>
+            <View style={styleTd}><Text>{oneAnswer.note}</Text></View>
+        </View>
+    )
+}
+
+const displayEmptyCardPDF = () => {
+    // console.log("displayEmpty")
+    return (
+        <View style={{width: 170}}></View>
+    )
+}
+
+
+// Build document component
 const PDFDocument = (props) => {
     console.log('PDFDocument')
+
+
+    let answersTemp = props.answers
+    
+    // Arrange all prio 4 answers
+    let amountPrio4 = []
+    let allPrio4Phase1 = answersTemp.filter(prio4 => parseInt(prio4.prio) === 4 && parseInt(prio4.phase) === 1)
+    amountPrio4[0] = allPrio4Phase1.length
+    let allPrio4Phase2 = answersTemp.filter(prio4 => parseInt(prio4.prio) === 4 && parseInt(prio4.phase) === 2)
+    amountPrio4[1] = allPrio4Phase2.length
+    let allPrio4Phase3 = answersTemp.filter(prio4 => parseInt(prio4.prio) === 4 && parseInt(prio4.phase) === 3)
+    amountPrio4[2] = allPrio4Phase3.length
+    let allPrio4Phase4 = answersTemp.filter(prio4 => parseInt(prio4.prio) === 4 && parseInt(prio4.phase) === 4)
+    amountPrio4[3] = allPrio4Phase4.length
+    amountPrio4.sort((a, b) => { return b - a })
+    let biggestAmountPrio4 = amountPrio4[0]
+
+    let allPrio4 = []
+    for (let i = 0; i < biggestAmountPrio4; i++) {
+        allPrio4.push([])
+        if (allPrio4Phase4[i] !== undefined) {
+            allPrio4[i].push(allPrio4Phase4[i])
+            } else {
+            allPrio4[i].push({})
+        }
+        if (allPrio4Phase3[i] !== undefined) {
+            allPrio4[i].push(allPrio4Phase3[i])
+            } else {
+            allPrio4[i].push({})
+        }
+        if (allPrio4Phase2[i] !== undefined) {
+            allPrio4[i].push(allPrio4Phase2[i])
+            } else {
+            allPrio4[i].push({})
+        }
+        if (allPrio4Phase1[i] !== undefined) {
+            allPrio4[i].push(allPrio4Phase1[i])
+            } else {
+            allPrio4[i].push({})
+        }
+    }
+    console.log('allPrio4', allPrio4)
+    // END - Arrange all prio 4 answers
+
+    // Arrange all prio 3 answers
+    let amountPrio3 = []
+    let allPrio3Phase1 = answersTemp.filter(prio4 => parseInt(prio4.prio) === 3 && parseInt(prio4.phase) === 1)
+    amountPrio3[0] = allPrio3Phase1.length
+    let allPrio3Phase2 = answersTemp.filter(prio4 => parseInt(prio4.prio) === 3 && parseInt(prio4.phase) === 2)
+    amountPrio3[1] = allPrio3Phase2.length
+    let allPrio3Phase3 = answersTemp.filter(prio4 => parseInt(prio4.prio) === 3 && parseInt(prio4.phase) === 3)
+    amountPrio3[2] = allPrio3Phase3.length
+    let allPrio3Phase4 = answersTemp.filter(prio4 => parseInt(prio4.prio) === 3 && parseInt(prio4.phase) === 4)
+    amountPrio3[3] = allPrio3Phase4.length
+    amountPrio3.sort((a, b) => { return b - a })
+    let biggestAmountPrio3 = amountPrio3[0]
+
+    let allPrio3 = []
+    for (let i = 0; i < biggestAmountPrio3; i++) {
+        allPrio3.push([])
+        if (allPrio3Phase4[i] !== undefined) {
+            allPrio3[i].push(allPrio3Phase4[i])
+        } else {
+            allPrio3[i].push({})
+        }
+        if (allPrio3Phase3[i] !== undefined) {
+            allPrio3[i].push(allPrio3Phase3[i])
+        } else {
+            allPrio3[i].push({})
+        }
+        if (allPrio3Phase2[i] !== undefined) {
+            allPrio3[i].push(allPrio3Phase2[i])
+        } else {
+            allPrio3[i].push({})
+        }
+        if (allPrio3Phase1[i] !== undefined) {
+            allPrio3[i].push(allPrio3Phase1[i])
+        } else {
+            allPrio3[i].push({})
+        }
+    }
+    // END - Arrange all prio 3 answers
 
     return (
         <Document>
@@ -91,33 +210,80 @@ const PDFDocument = (props) => {
                         <View style={styles.columnTitle}><Text>Toiminnan tavoitteet</Text></View>
                     </View>
                     <Text style={{ textAlign: 'center' }}>--------------------------------------------------------------------------------------------------------------------------</Text>
+                    {/* START Prio4*/}
                     <View>
-                         <View style={styles.row}>
-                            <View style={styles.column}>
-                                <View style={[styles.th, {backgroundColor: "#4081f7"}]}><Text>Header</Text></View>
-                                <View style={styles.td}><Text>Content</Text></View>
-                            </View>
-                            <View style={styles.column}>
-                                <View style={[styles.th, {backgroundColor: "#2fe19d"}]}><Text>Header</Text></View>
-                                <View style={styles.td}><Text>Content</Text></View>
-                            </View>
-                            <View style={styles.column}>
-                                <View style={[styles.th, {backgroundColor: "#e1b92f"}]}><Text>Header</Text></View>
-                                <View style={styles.td}><Text>Content</Text></View>
-                            </View>
-                            <View style={styles.column}>
-                                <View style={[styles.th, {backgroundColor: "#f77433"}]}><Text>Header</Text></View>
-                                <View style={styles.td}><Text>Content</Text></View>
-                            </View>
-                        </View>
+                        {allPrio4.map((oneRowAnswers) =>
+                            <div key={getRandomInt()}>
+                                <View style={styles.row}>
+                                    <View style={styles.column}>
+                                        {toDisplayCardOrNotPDF(oneRowAnswers[0], styles.th, '#4081f7', styles.td)}
+                                        {/*                                         <View style={[styles.th, { backgroundColor: "#4081f7" }]}><Text>{oneRowAnswers[0].q}</Text></View>
+                                        <View style={styles.td}><Text>{oneRowAnswers[0].note}</Text></View> */}
+                                    </View>
+                                    <View style={styles.column}>
+                                        {toDisplayCardOrNotPDF(oneRowAnswers[1], styles.th, '#2fe19d', styles.td)}
+
+                                        {/*                                         <View style={[styles.th, { backgroundColor: "#2fe19d" }]}><Text>{oneRowAnswers[1].q}</Text></View>
+                                        <View style={styles.td}><Text>{oneRowAnswers[1].q}</Text></View> */}
+                                    </View>
+                                    <View style={styles.column}>
+                                        {toDisplayCardOrNotPDF(oneRowAnswers[2], styles.th, '#e1b92f', styles.td)}
+
+                                        {/*                                         <View style={[styles.th, { backgroundColor: "#e1b92f" }]}><Text>{oneRowAnswers[2].q}</Text></View>
+                                        <View style={styles.td}><Text>{oneRowAnswers[2].q}</Text></View> */}
+                                    </View>
+                                    <View style={styles.column}>
+                                        {toDisplayCardOrNotPDF(oneRowAnswers[3], styles.th, '#f77433', styles.td)}
+
+                                        {/*                                         <View style={[styles.th, { backgroundColor: "#f77433" }]}><Text>{oneRowAnswers[3].q}</Text></View>
+                                        <View style={styles.td}><Text>{oneRowAnswers[3].q}</Text></View> */}
+                                    </View>
+                                </View>
+                            </div>
+                        )}
                     </View>
+                    {/* END Prio4*/}
+
                     <View>
                         <Text style={{ textAlign: 'center', fontSize: 12, marginTop: 15 }}>Paljon kehitettävää</Text>
                         <Text style={styles.dottedLine}>------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</Text>
                     </View>
-                    <Text style={{ fontSize: 12, marginTop: 25 }}>Tähän Melko paljon kehitettävää kohteet</Text>
+
+                    {/* START Prio3*/}
                     <View>
-                        <Text style={{ textAlign: 'center', fontSize: 12 }}>Melko paljon kehitettävää</Text>
+                        {allPrio3.map((oneRowAnswers) =>
+                            <div key={getRandomInt()}>
+                                <View style={styles.row}>
+                                    <View style={styles.column}>
+                                        {toDisplayCardOrNotPDF(oneRowAnswers[0], styles.th, '#77abf7', styles.td)}
+                                        {/*                                         <View style={[styles.th, { backgroundColor: "#4081f7" }]}><Text>{oneRowAnswers[0].q}</Text></View>
+                                        <View style={styles.td}><Text>{oneRowAnswers[0].note}</Text></View> */}
+                                    </View>
+                                    <View style={styles.column}>
+                                        {toDisplayCardOrNotPDF(oneRowAnswers[1], styles.th, '#6be7b8', styles.td)}
+                                        {/*                                         <View style={[styles.th, { backgroundColor: "#2fe19d" }]}><Text>{oneRowAnswers[1].q}</Text></View>
+                                        <View style={styles.td}><Text>{oneRowAnswers[1].q}</Text></View> */}
+                                    </View>
+                                    <View style={styles.column}>
+                                        {toDisplayCardOrNotPDF(oneRowAnswers[2], styles.th, '#e7cb6b', styles.td)}
+
+                                        {/*                                         <View style={[styles.th, { backgroundColor: "#e1b92f" }]}><Text>{oneRowAnswers[2].q}</Text></View>
+                                        <View style={styles.td}><Text>{oneRowAnswers[2].q}</Text></View> */}
+                                    </View>
+                                    <View style={styles.column}>
+                                        {toDisplayCardOrNotPDF(oneRowAnswers[3], styles.th, '#f79b6d', styles.td)}
+
+                                        {/*                                         <View style={[styles.th, { backgroundColor: "#f77433" }]}><Text>{oneRowAnswers[3].q}</Text></View>
+                                        <View style={styles.td}><Text>{oneRowAnswers[3].q}</Text></View> */}
+                                    </View>
+                                </View>
+                            </div>
+                        )}
+                    </View>
+                    {/* END Prio3*/}
+
+                    <View>
+                        <Text style={{ textAlign: 'center', fontSize: 12, marginTop: 15 }}>Melko paljon kehitettävää</Text>
                     </View>
                 </View>
 
