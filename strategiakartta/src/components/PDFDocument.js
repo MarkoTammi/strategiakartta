@@ -1,17 +1,20 @@
 import React from 'react';
 import { Page, Document, View, Text, Image, StyleSheet, Canvas } from '@react-pdf/renderer';
 
+// Text file
+import pdfDocumentTxt from '../txtFiles/pdfDocumentTxt';
+
 
 
 const styles = StyleSheet.create({
     page: {
         backgroundColor: '#ffffff',
-        margin: 20
+        margin: 20,
     },
     footer: {
         color: '#47aeb6',
-        fontSize: '12px',
-        margin: 20
+        fontSize: '13px',
+        margin: 40
     },
     map: {
         margin: 10,
@@ -19,7 +22,7 @@ const styles = StyleSheet.create({
         borderWidth: '1px',
         borderStyle: 'solid',
         borderRadius: '10px',
-        width: '790px'
+        width: '790px',
     },
     titleRow: {
     },
@@ -69,6 +72,23 @@ const styles = StyleSheet.create({
         width: 170,
         borderBottomLeftRadius: 3,
         borderBottomRightRadius: 3
+      },
+      guide: {
+        backgroundColor: '#ffffff',
+        margin: 40,
+        fontSize : 13,
+        height: 650
+      },
+      guideTxt: {
+          marginBottom: 10
+      },
+      suuntiaAdd : {
+          height: 650,
+          fontSize: 12
+      },
+      suuntiaLogo: {
+        width : 150,
+        margin : 40
       }
 })
 
@@ -201,15 +221,18 @@ const PDFDocument = (props) => {
 
     return (
         <Document>
+
+            {/* START map page */}
             <Page size="A4" orientation='landscape' style={styles.page}>
                 <View style={styles.map} >
                     <View style={styles.rowTitle}>
-                        <View style={styles.columnTitle}><Text >Henkilöstön osaamisen ja muiden resurssien kehitystarpeet</Text></View>
-                        <View style={styles.columnTitle}><Text >Toiminnan ja prosessien kehitystarpeet</Text></View>
-                        <View style={styles.columnTitle}><Text>Asiakkaiden odotukset</Text></View>
-                        <View style={styles.columnTitle}><Text>Toiminnan tavoitteet</Text></View>
+                        <View style={styles.columnTitle}><Text >{pdfDocumentTxt[props.version][1001]}</Text></View>
+                        <View style={styles.columnTitle}><Text >{pdfDocumentTxt[props.version][1002]}</Text></View>
+                        <View style={styles.columnTitle}><Text>{pdfDocumentTxt[props.version][1003]}</Text></View>
+                        <View style={styles.columnTitle}><Text>{pdfDocumentTxt[props.version][1004]}</Text></View>
                     </View>
                     <Text style={{ textAlign: 'center' }}>--------------------------------------------------------------------------------------------------------------------------</Text>
+                    
                     {/* START Prio4*/}
                     <View>
                         {allPrio4.map((oneRowAnswers) =>
@@ -217,26 +240,15 @@ const PDFDocument = (props) => {
                                 <View style={styles.row}>
                                     <View style={styles.column}>
                                         {toDisplayCardOrNotPDF(oneRowAnswers[0], styles.th, '#4081f7', styles.td)}
-                                        {/*                                         <View style={[styles.th, { backgroundColor: "#4081f7" }]}><Text>{oneRowAnswers[0].q}</Text></View>
-                                        <View style={styles.td}><Text>{oneRowAnswers[0].note}</Text></View> */}
                                     </View>
                                     <View style={styles.column}>
                                         {toDisplayCardOrNotPDF(oneRowAnswers[1], styles.th, '#2fe19d', styles.td)}
-
-                                        {/*                                         <View style={[styles.th, { backgroundColor: "#2fe19d" }]}><Text>{oneRowAnswers[1].q}</Text></View>
-                                        <View style={styles.td}><Text>{oneRowAnswers[1].q}</Text></View> */}
                                     </View>
                                     <View style={styles.column}>
                                         {toDisplayCardOrNotPDF(oneRowAnswers[2], styles.th, '#e1b92f', styles.td)}
-
-                                        {/*                                         <View style={[styles.th, { backgroundColor: "#e1b92f" }]}><Text>{oneRowAnswers[2].q}</Text></View>
-                                        <View style={styles.td}><Text>{oneRowAnswers[2].q}</Text></View> */}
                                     </View>
                                     <View style={styles.column}>
                                         {toDisplayCardOrNotPDF(oneRowAnswers[3], styles.th, '#f77433', styles.td)}
-
-                                        {/*                                         <View style={[styles.th, { backgroundColor: "#f77433" }]}><Text>{oneRowAnswers[3].q}</Text></View>
-                                        <View style={styles.td}><Text>{oneRowAnswers[3].q}</Text></View> */}
                                     </View>
                                 </View>
                             </div>
@@ -245,7 +257,7 @@ const PDFDocument = (props) => {
                     {/* END Prio4*/}
 
                     <View>
-                        <Text style={{ textAlign: 'center', fontSize: 12, marginTop: 15 }}>Paljon kehitettävää</Text>
+                        <Text style={{ textAlign: 'center', fontSize: 12, marginTop: 15 }}>{pdfDocumentTxt[props.version][1005]}</Text>
                         <Text style={styles.dottedLine}>------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</Text>
                     </View>
 
@@ -256,25 +268,15 @@ const PDFDocument = (props) => {
                                 <View style={styles.row}>
                                     <View style={styles.column}>
                                         {toDisplayCardOrNotPDF(oneRowAnswers[0], styles.th, '#77abf7', styles.td)}
-                                        {/*                                         <View style={[styles.th, { backgroundColor: "#4081f7" }]}><Text>{oneRowAnswers[0].q}</Text></View>
-                                        <View style={styles.td}><Text>{oneRowAnswers[0].note}</Text></View> */}
                                     </View>
                                     <View style={styles.column}>
                                         {toDisplayCardOrNotPDF(oneRowAnswers[1], styles.th, '#6be7b8', styles.td)}
-                                        {/*                                         <View style={[styles.th, { backgroundColor: "#2fe19d" }]}><Text>{oneRowAnswers[1].q}</Text></View>
-                                        <View style={styles.td}><Text>{oneRowAnswers[1].q}</Text></View> */}
                                     </View>
                                     <View style={styles.column}>
                                         {toDisplayCardOrNotPDF(oneRowAnswers[2], styles.th, '#e7cb6b', styles.td)}
-
-                                        {/*                                         <View style={[styles.th, { backgroundColor: "#e1b92f" }]}><Text>{oneRowAnswers[2].q}</Text></View>
-                                        <View style={styles.td}><Text>{oneRowAnswers[2].q}</Text></View> */}
                                     </View>
                                     <View style={styles.column}>
                                         {toDisplayCardOrNotPDF(oneRowAnswers[3], styles.th, '#f79b6d', styles.td)}
-
-                                        {/*                                         <View style={[styles.th, { backgroundColor: "#f77433" }]}><Text>{oneRowAnswers[3].q}</Text></View>
-                                        <View style={styles.td}><Text>{oneRowAnswers[3].q}</Text></View> */}
                                     </View>
                                 </View>
                             </div>
@@ -283,33 +285,48 @@ const PDFDocument = (props) => {
                     {/* END Prio3*/}
 
                     <View>
-                        <Text style={{ textAlign: 'center', fontSize: 12, marginTop: 15 }}>Melko paljon kehitettävää</Text>
+                        <Text style={{ textAlign: 'center', fontSize: 12, marginTop: 15 }}>{pdfDocumentTxt[props.version][1006]}</Text>
                     </View>
                 </View>
 
                 <View >
-                    <Text style={styles.footer}>Suuntia - strategisen johtamisen ja kehittämisen digitaalinen työympäristö</Text>
+                    <Text style={styles.footer}>{pdfDocumentTxt[props.version][1007]}</Text>
                 </View>
             </Page>
 
-            <Page style={styles.page}>
-                <View >
-                    <Text>
-                        Tähän ohjeet
-                    </Text>
+            {/* START guide page */}
+            <Page>
+                <View style={styles.guide} >
+                    <Text style={{fontSize: 20, textAlign: 'center', marginBottom:30, marginTop:50}}>{pdfDocumentTxt[props.version][1041]}</Text>
+                    <Text style={styles.guideTxt}>{pdfDocumentTxt[props.version][1031]}</Text>
+                    <Text>{pdfDocumentTxt[props.version][1032]}</Text>
+                    <Text>{pdfDocumentTxt[props.version][1033]}</Text>
+                    <Text>{pdfDocumentTxt[props.version][1034]}</Text>
+                    <Text>{pdfDocumentTxt[props.version][1035]}</Text>
+                    <Text style={styles.guideTxt}>{pdfDocumentTxt[props.version][1036]}</Text>
+                    <Text style={styles.guideTxt}>{pdfDocumentTxt[props.version][1037]}</Text>
+                    <Text style={styles.guideTxt}>{pdfDocumentTxt[props.version][1038]}</Text>
+                    <Text style={styles.guideTxt}>{pdfDocumentTxt[props.version][1040]}</Text>
                 </View>
                 <View >
-                    <Text style={styles.footer}>Suuntia - strategisen johtamisen ja kehittämisen digitaalinen työympäristö</Text>
+                    <Text style={[styles.footer,{marginTop : 40} ]}>{pdfDocumentTxt[props.version][1007]}</Text>
                 </View>
             </Page>
+
+            {/* START Suuntia add page */}
             <Page style={styles.page}>
-                <View >
-                    <Text>
-                        Tähän Suuntia mainos
-                    </Text>
+                <View style={styles.suuntiaAdd}>
+                    <Image style={styles.suuntiaLogo} src={window.location.origin + '/suuntia_logo_500px.jpg'}></Image>
+                    <View style={{margin:40}}>
+                        <Text style={{fontSize: 20, textAlign: 'center', marginBottom:10, marginTop:30}}>JOHTAMISEN JA KEHITTÄMISEN</Text>
+                        <Text style={{fontSize: 20, textAlign: 'center', marginBottom:30, marginTop:10}}>DIGITAALINEN TYÖYMPÄRISTÖ</Text>
+                        <Text style={styles.guideTxt}>{pdfDocumentTxt[props.version][1050]}</Text>
+                        <Text style={styles.guideTxt}>{pdfDocumentTxt[props.version][1051]}</Text>
+                        <Text style={styles.guideTxt}>{pdfDocumentTxt[props.version][1052]}</Text>
+                    </View>
                 </View>
                 <View >
-                    <Text style={styles.footer}>Suuntia - strategisen johtamisen ja kehittämisen digitaalinen työympäristö</Text>
+                    <Text style={styles.footer}>{pdfDocumentTxt[props.version][1007]}</Text>
                 </View>
             </Page>
         </Document>

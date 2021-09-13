@@ -139,11 +139,42 @@ const Selected = (props) => {
 
     const displayCard = (oneAnswer) => {
         //console.log("displayCard")
-        //console.log("oneAnswer.q :", oneAnswer.q)
+        //console.log("oneAnswer :", oneAnswer)
         //console.log("oneAnswer.note :", oneAnswer.note)
         //console.log("oneAnswer.phase", oneAnswer.phase)
+
+        let bcColor
+        if (oneAnswer.phase === 1) {
+            if (parseInt(oneAnswer.prio) === 4) {
+                bcColor = "#f77433"
+            } else {
+                bcColor = "#f79b6d"
+            }
+        }
+        if (oneAnswer.phase === 2) {
+            if (parseInt(oneAnswer.prio) === 4) {
+                bcColor = "#e1b92f"
+            } else {
+                bcColor = "#e7cb6b"
+            }
+        }
+        if (oneAnswer.phase === 3) {
+            if (parseInt(oneAnswer.prio) === 4) {
+                bcColor = "#2fe19d"
+            } else {
+                bcColor = "#6be7b8"
+            }
+        }
+        if (oneAnswer.phase === 4) {
+            if (parseInt(oneAnswer.prio) === 4) {
+                bcColor = "#4081f7"
+            } else {
+                bcColor = "#77abf7"
+            }
+        }
         const style = {
-            backgroundColor: `${color[oneAnswer.phase]}`
+            // backgroundColor: `${color[oneAnswer.phase]}`
+            backgroundColor : bcColor
         }
 
         return (

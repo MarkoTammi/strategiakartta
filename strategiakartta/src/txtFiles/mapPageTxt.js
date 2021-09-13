@@ -7,7 +7,7 @@ const mapPageTxt = {
             1002: "Hieman kehitettävää",
             1003: "Melko paljon kehitettävää",
             1004: "Paljon kehitettävää",
-            1005: "Kirjoita lyhyt muistiinpano",
+            1005: "Kirjoita lyhyt max 50 merkin muistiinpano",
 
             1010: "Arvioi kehittämisen tarve tällä hetkellä",
 
