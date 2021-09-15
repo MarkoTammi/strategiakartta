@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         fontWeight: 700,
         display: "flex",
         flexDirection: "row",
-        justifyContent: "center",
+        // justifyContent: "center",
         borderWidth: 0.5,
         borderLeftStyle: "solid",
         borderLeftWidth: 0.25,
@@ -98,16 +98,14 @@ const getRandomInt = () => {
 
 
 const toDisplayCardOrNotPDF = (oneAnswer, styleTh, backgroundColor, styleTd) => {
-    console.log('START displayCard')
     if (oneAnswer.q !== undefined) {
-        // console.log("CARD")
         return (
             <div key={getRandomInt()}>
                 {displayCardPDF(oneAnswer, styleTh, backgroundColor, styleTd)}
             </div>
         )
     } else {
-        // console.log("EMPTY")
+        // Empty card
         return (
             <div key={getRandomInt()}>
                 {displayEmptyCardPDF()}
@@ -126,7 +124,6 @@ const displayCardPDF = (oneAnswer, styleTh, backgroundColor, styleTd) => {
 }
 
 const displayEmptyCardPDF = () => {
-    // console.log("displayEmpty")
     return (
         <View style={{width: 170}}></View>
     )
@@ -135,12 +132,9 @@ const displayEmptyCardPDF = () => {
 
 // Build document component
 const PDFDocument = (props) => {
-    //console.log('PDFDocument')
-
 
     let answersTemp = props.answers
     let userTemp = props.user
-    console.log('userTemp', userTemp)
     
     // Arrange all prio 4 answers
     let amountPrio4 = []
@@ -233,7 +227,7 @@ const PDFDocument = (props) => {
                         <View style={styles.columnTitle}><Text>{pdfDocumentTxt[props.version][1004]}</Text></View>
                     </View>
                     <Text style={{ textAlign: 'center' }}>--------------------------------------------------------------------------------------------------------------------------</Text>
-                    
+
                     {/* START Prio4*/}
                     <View>
                         {allPrio4.map((oneRowAnswers) =>
@@ -289,14 +283,14 @@ const PDFDocument = (props) => {
                         <Text style={{ textAlign: 'center', fontSize: 12, marginTop: 15 }}>{pdfDocumentTxt[props.version][1006]}</Text>
                     </View>
                 </View>
-                            
+
                 <View>
-                    <Text style={{fontSize: 12, marginLeft : 20}}>{userTemp.organization}  /  {userTemp.username}</Text>
+                    <Text style={{ fontSize: 12, marginLeft: 20 }}>{userTemp.organization}  /  {userTemp.username}</Text>
                 </View>
 
                 <View >
                     <Text style={styles.footer}>{pdfDocumentTxt[props.version][1007]}</Text>
-                </View> 
+                </View>
             </Page>
 
             {/* START guide page */}

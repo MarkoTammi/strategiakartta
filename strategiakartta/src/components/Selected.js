@@ -12,9 +12,6 @@ import Card from "react-bootstrap/Card"
 // text files
 import mapPageTxt from "../txtFiles/mapPageTxt"
 
-// color
-import color from "../services/color"
-
 
 const Selected = (props) => {
     //console.log("Selected component")

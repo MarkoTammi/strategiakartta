@@ -39,7 +39,7 @@ const MapTarget = (props) => {
     }
     // Display "back" button if other page than MapTarget 
     const displayBackwardsButton = () => {
-        if (props.pageName != "MapTarget")
+        if (props.pageName !== "MapTarget")
             return (
                 <Button className="btn btn-secondary m-2" onClick={props.handlerBackwards}>{buttonTxt[props.version][1001]}</Button>
             )

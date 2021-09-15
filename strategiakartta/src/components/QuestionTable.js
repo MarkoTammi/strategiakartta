@@ -29,7 +29,9 @@ import color from "../services/color"
 const QuestionTable = (props) => {
 
     // Display "Other what" rows
-    const displayOtherWhat = (pageName, otherWhatAnswers, setOtherWhatAnswers, newEmptyOtherWhat) => {
+    const displayOtherWhat = (pageName, otherWhatAnswers, newEmptyOtherWhat) => {
+    //const displayOtherWhat = (pageName, otherWhatAnswers, setOtherWhatAnswers, newEmptyOtherWhat) => {
+
         //console.log('START - displayOtherWhat')
 /* 
         const findPhase = (pageName) => {
@@ -60,24 +62,9 @@ const QuestionTable = (props) => {
         //console.log('emptyRowInd', emptyRowInd)
 
         if (emptyRowInd === -1) {
-
             newEmptyOtherWhat()
-
-            /* const otherWhatOriginal = {
-                id : props.findId(),
-                q : "",
-                note : "",
-                prio : 0,
-                mod : false,
-                phase: findPhase(pageName),
-                pageName : pageName
-            }
-            otherWhatToDisplay.push(otherWhatOriginal)
-            setOtherWhatAnswers(otherWhatToDisplay) */
         }
         
-        //console.log('otherWhatToDisplay' ,otherWhatToDisplay)
-
 
         return (
             <div>
@@ -236,7 +223,9 @@ const QuestionTable = (props) => {
                 </Row>
             )}
 
-            {displayOtherWhat(props.pageName, props.otherWhatAnswers, props.setOtherWhatAnswers, props.newEmptyOtherWhat)}
+            {displayOtherWhat(props.pageName, props.otherWhatAnswers, props.newEmptyOtherWhat)}
+
+            {/* {displayOtherWhat(props.pageName, props.otherWhatAnswers, props.setOtherWhatAnswers, props.newEmptyOtherWhat)} */}
 
 
         </div>

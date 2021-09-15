@@ -11,8 +11,6 @@ import Col from "react-bootstrap/Col"
 import Card from "react-bootstrap/Card"
 import ListGroup from "react-bootstrap/ListGroup"
 import Container from "react-bootstrap/Container" */
-import Button from "react-bootstrap/Button"
-import Modal from "react-bootstrap/Modal"
 
 
 // Components
@@ -27,7 +25,6 @@ import ModalPopUp from './components/ModalPopUp';
 import flowControl from "./services/flowControl"
 
 import generalTxt from "./txtFiles/generalTxt"
-import MapTarget from './components/MapPage';
 
 
 const App = () => {
@@ -54,15 +51,13 @@ const App = () => {
   const [modalButton1, setModalButton1] = useState("")
   const [user, setUser] = useState({username : "", organization: "", useremail: ""})
 
-
-
   // End of State definitions
 
   // To set name of page guide or map to be rendered 
   useEffect(() => {
     //console.log('useEffect page nro - ' + page)
     setPageName(flowControl[version][page])
-  })
+  }, [version, page])
 
   // Render page always to top when pageName state is changed
   useEffect(() => {
@@ -93,16 +88,14 @@ const App = () => {
       switch (pageName) {
         case "MapTarget":
           return 1
-          break
         case "MapCustomer":
           return 2
-          break
         case "MapProcess":
           return 3
-          break
         case "MapResources":
           return 4
-          break
+        default:
+          console.log('App.js findPhase switch - default')
       }
     }
 
@@ -314,7 +307,7 @@ const App = () => {
           pageName={pageName}
           answers={answers}
           otherWhatAnswers={otherWhatAnswers}
-          setOtherWhatAnswers={setOtherWhatAnswers}
+          // setOtherWhatAnswers={setOtherWhatAnswers}
           handlerShortNote={handlerShortNote}
           handlerRadioButton={handlerRadioButton}
           showMap={showMap}

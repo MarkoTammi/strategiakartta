@@ -1,6 +1,6 @@
 // Component to download PDF
 
-import React, { useState } from "react"
+import React, { } from "react"
 import { PDFDownloadLink } from '@react-pdf/renderer';
 
 // components
