@@ -1,6 +1,6 @@
 // Component to download PDF
 
-import React from "react"
+import React, { useState } from "react"
 import { PDFDownloadLink } from '@react-pdf/renderer';
 
 // components
@@ -16,12 +16,13 @@ import Button from "react-bootstrap/Button"
 // text files
 //import generalTxt from "../txtFiles/generalTxt"
 import buttonTxt from "../txtFiles/buttonTxt"
-import pdfDocumentTxt from "../txtFiles/pdfDocumentTxt";
 
 
 
 const SendPdf = (props) => {
     //(console.log("sendPDF component")
+    const usr = props.user
+
 
     return (
         <div style={{ margin: "40px" }}>
@@ -32,6 +33,10 @@ const SendPdf = (props) => {
                     pageName={props.pageName}
                     answers={props.answers}
                 />
+                <Row style={{marginTop:15, marginBottom: 30}}>
+                    <Col>{usr.organization}</Col>
+                    <Col>{usr.username}</Col>
+                </Row>
 
                 <Row className="justify-content-md-center">
                     <Col xs>
@@ -40,8 +45,7 @@ const SendPdf = (props) => {
                     <Col xs>
                         <Button variant="btn btn-light m-2" style={{}}>
                             <PDFDownloadLink 
-                                document={<PDFDocument version={props.version} pageName={props.pageName} answers={props.answers} />} 
-                                //document={<PDFDocument />}
+                                document={<PDFDocument version={props.version} pageName={props.pageName} answers={props.answers} user={props.user} />} 
                                 fileName="strategiakartta.pdf">
                                 {/* {({ blob, url, loading, error }) => (loading ? 'Lataa dokumenttia...' : 'Lataa strategiakartta PDF')} */}
                                 {({ blob, loading, error }) => (loading ? 'Lataa dokumenttia...' : 'Lataa strategiakartta PDF')}

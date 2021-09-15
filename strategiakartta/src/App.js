@@ -52,6 +52,8 @@ const App = () => {
   const [modalBody2, setModalBody2] = useState("")
   const [modalBody3, setModalBody3] = useState("")
   const [modalButton1, setModalButton1] = useState("")
+  const [user, setUser] = useState({username : "", organization: "", useremail: ""})
+
 
 
   // End of State definitions
@@ -340,6 +342,9 @@ const App = () => {
           handlerForward={handlerForward}
           pageName={pageName}
           showMap={showMap}
+          user={user}
+          handlerUserName={handlerUserName}
+          handlerOrganizationName={handlerOrganizationName}
         />
       )
     }
@@ -350,6 +355,7 @@ const App = () => {
           handlerBackwards={handlerBackwards}
           pageName={pageName}
           answers={answers}
+          user={user}
         />
       )
     }
@@ -365,6 +371,19 @@ const App = () => {
     setModalButton1("")
   }
 
+  // Handler to record organization name
+  const handlerOrganizationName = (e) => {
+    //console.log('handlerOrganizationName', e.target.value)
+    const orgName = e.target.value
+    setUser({...user, organization: orgName})
+}
+
+  // Handler to record person name who did the map
+  const handlerUserName = (e) => {
+    //console.log('handlerUserName', e.target.value)
+    const usrName = e.target.value
+    setUser({...user, username: usrName})
+}
 
   return (
     <div>

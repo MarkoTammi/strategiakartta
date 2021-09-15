@@ -19,7 +19,9 @@ import buttonTxt from "../txtFiles/buttonTxt"
 
 
 const MapReady = (props) => {
-    //console.log("MapReady component")
+    //console.log("MapReady component - user", props.user)
+    let userTemp = props.user
+
 
     return (
         <div>
@@ -38,13 +40,45 @@ const MapReady = (props) => {
                 
                 <p style={{ marginTop: '20px'}}>{mapPageTxt[props.version][props.pageName][1012]}</p>
 
-                {/* <p style={{}}>{mapPageTxt[props.version][props.pageName][1013]}</p> */}
+                <p style={{}}>{mapPageTxt[props.version][props.pageName][1013]}</p>
+                
+                    <div className="form-group">
+                        <Row>
+                            <Col xs={2}>
+                                {mapPageTxt[props.version][props.pageName][1014]}
+                            </Col>
+                            <Col>
+                                <input
+                                    onChange={(e) => props.handlerOrganizationName(e)}
+                                    type="text" className="form-control"
+                                    placeholder={mapPageTxt[props.version][props.pageName][1015]}
+                                    value={userTemp.organization}
+                                />
+                            </Col>
+                        </Row>
+                    </div>
+                    <div className="form-group">
+                        <Row style={{ marginTop: '20px' }}>
+                            <Col xs={2}>
+                                {mapPageTxt[props.version][props.pageName][1016]}
+                            </Col>
+                            <Col>
+                                <input
+                                    onChange={(e) => props.handlerUserName(e)}
+                                    type="text" className="form-control"
+                                    placeholder={mapPageTxt[props.version][props.pageName][1015]}
+                                    value={userTemp.username}
+                                />
+                            </Col>
+                        </Row>
+                    </div>
+                
 
 
                 <Row className="justify-content-md-center">
                     <Col xs>
                         <Button className="btn btn-secondary m-2" onClick={props.handlerBackwards}>{buttonTxt[props.version][1001]}</Button>
-                        <Button onClick={props.handlerForward}>{buttonTxt[props.version][1004]}</Button>
+                        <Button onClick={props.handlerForward}>{buttonTxt[props.version][1005]}</Button>
                     </Col>
                 </Row>
 

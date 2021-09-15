@@ -54,10 +54,14 @@ const mapPageTxt = {
             1002: "Toiminnan ja prosessien kehitystarpeet",
             1003: "Henkilöstön osaamisen ja muiden resurssien kehitystarpeet",
 
-            1010: "Valmis startegiakartta",
+            1010: "Viimeistele startegiakartta",
             1011: "Onko tekemäsi strategiakartta ymmärrettävä ja uskottava myös henkilökunnan ja yhteistyökumppaneiden näkökulmasta?",
             1012: "Voit muokata ja täydentää strategiakarttaa palaamalla edelllisiin vaiheisiin. Yleensä strategiakartta paranee kun priorisoit riittävästi ja hyödynnät lyhyttä muistiinpanokenttää esimerkiksi vastuuhenkilön nimellä ja miten kehitystä eli muutosta mitataan. Saat yksittäisen kehityskohteen pois strategiakartasta muuttamalla sen prioriteetin 'ei kehitettävää' tilaan.",
-            1013: "Seuraavalla sivulla voit viimeistellä strategiakartan organisaatiosi ja omalla nimellä sekä ladata valmiin strategiakartan PDFnä."
+            1013: "Viimeistele strategiakartta organisaatiosi ja omalla nimelläsi. Seuraavalla sivulla voit ladata valmiin strategiakartan PDFnä.",
+            1014: "Organisaation nimi : ",
+            1015: "Kirjoita nimi",
+            1016: "Strategiakartan laati : ",
+            1017: "Sähköpostiosoite vai puhelinnumero"
         }
     },
     11: {

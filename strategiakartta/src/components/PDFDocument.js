@@ -1,5 +1,5 @@
 import React from 'react';
-import { Page, Document, View, Text, Image, StyleSheet, Canvas } from '@react-pdf/renderer';
+import { Page, Document, View, Text, Image, StyleSheet} from '@react-pdf/renderer';
 
 // Text file
 import pdfDocumentTxt from '../txtFiles/pdfDocumentTxt';
@@ -135,10 +135,12 @@ const displayEmptyCardPDF = () => {
 
 // Build document component
 const PDFDocument = (props) => {
-    console.log('PDFDocument')
+    //console.log('PDFDocument')
 
 
     let answersTemp = props.answers
+    let userTemp = props.user
+    console.log('userTemp', userTemp)
     
     // Arrange all prio 4 answers
     let amountPrio4 = []
@@ -177,7 +179,6 @@ const PDFDocument = (props) => {
             allPrio4[i].push({})
         }
     }
-    console.log('allPrio4', allPrio4)
     // END - Arrange all prio 4 answers
 
     // Arrange all prio 3 answers
@@ -288,10 +289,14 @@ const PDFDocument = (props) => {
                         <Text style={{ textAlign: 'center', fontSize: 12, marginTop: 15 }}>{pdfDocumentTxt[props.version][1006]}</Text>
                     </View>
                 </View>
+                            
+                <View>
+                    <Text style={{fontSize: 12, marginLeft : 20}}>{userTemp.organization}  /  {userTemp.username}</Text>
+                </View>
 
                 <View >
                     <Text style={styles.footer}>{pdfDocumentTxt[props.version][1007]}</Text>
-                </View>
+                </View> 
             </Page>
 
             {/* START guide page */}
@@ -323,6 +328,7 @@ const PDFDocument = (props) => {
                         <Text style={styles.guideTxt}>{pdfDocumentTxt[props.version][1050]}</Text>
                         <Text style={styles.guideTxt}>{pdfDocumentTxt[props.version][1051]}</Text>
                         <Text style={styles.guideTxt}>{pdfDocumentTxt[props.version][1052]}</Text>
+                        <Text style={styles.guideTxt}>{pdfDocumentTxt[props.version][1053]}</Text>
                     </View>
                 </View>
                 <View >

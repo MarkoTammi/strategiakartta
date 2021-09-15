@@ -25,9 +25,10 @@ const pdfDocumentTxt = {
         1040: "Mikä on sinun strategiakartta ja sen tarina?",
         1041: "Ohje strategiakartan hyödyntämiseen",
 
-        1050: "Suuntia-palvelu edustaa jatkuvan kehityksen mallia, jossa kehittyminen on elämäntapa ja osa entistä palkitsevampaa arkea. Se tarjoaa valmiin, selkeän rakenteen jatkuvaan kehittämiseen sekä henkilöstön osaamisen kehittämiseen. Palvelu sopii erityisesti 20 - 150 henkilöä työllistävälle organisaatiolle.",
+        1050: "Suuntia tarjoaa valmiin, selkeän rakenteen organisaation jatkuvaan kehittämiseen sekä henkilöstön osaamisen kehittämiseen. Palvelu sopii erityisesti 20 - 150 henkilöä työllistävälle organisaatiolle.",
         1051: "Palvelu tarjoaa suoraviivaiset työvälineet henkilökunnan yhteistyöpotentiaalin tehokkaampaan hyödyntämiseen. Samalla se tuo digitaalisuuden johtamisessa ja henkilökunnan välisessä yhteistoiminnassa täysin uudelle tasolle.",
-        1052: "Suuntia tarjoaa konkreettisia hyötyjä kaikille käyttäjilleen; henkilöstölle, johdolle ja omistajalle."
+        1052: "Suuntia tarjoaa konkreettisia hyötyjä kaikille käyttäjilleen; henkilöstölle, johdolle ja omistajalle.", 
+        1053: "Lisätietoja ja palvelun esittely sähköpostilla myynti@suuntia.fi tai puhelimella 050 564 8135."
     },
     11: {
         1001 : "test"
