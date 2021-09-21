@@ -75,7 +75,7 @@ const QuestionTable = (props) => {
                                 <div className="form-group">
                                     <input onChange={(e) => props.handlerOtherWhatTarget(e, answer)}
                                         type="text" className="form-control"
-                                        placeholder="Voit kirjoittaa tähän oman vaihtoehdon"
+                                        placeholder={mapPageTxt[props.version]["MapGen"][1006]}
                                         value={displayOtherWhatQuestion(answer, props.answers)} />
                                 </div>
                             </Form>

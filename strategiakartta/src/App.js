@@ -146,50 +146,54 @@ const App = () => {
   // Event handler to record short notice answers
   const handlerShortNote = (e, question) => {
 
-    let ans = {}
-    ans.note = e.target.value
+    const noteForLength = e.target.value
 
-    ans.id = question.id
-    ans.phase = question.phase
-    ans.pageName = question.pageName
+    if (noteForLength.length < 51) {
 
-    let answersTemp = [...answers]
-    let indexAns = answersTemp.findIndex(x => parseInt(x.id) === parseInt(ans.id))
-
-    let otherWhatAnswersTemp = [...otherWhatAnswers]
-    let indexOth = otherWhatAnswersTemp.findIndex(x => parseInt(x.id) === parseInt(ans.id))
-
-    if (ans.id >= 1000) {
-      ans.q = otherWhatAnswersTemp[indexOth].q
-      ans.mod = true
-      } else {
-      ans.q = question.q
-      ans.mod = true
-    }
-
-    // Update state - Answers
-    if (indexAns === -1) {
-      // Answer is not found in State
-      ans.prio = 0
-      answersTemp[answersTemp.length] = ans
-    } else {
-      // Answer is found in State
-      ans.prio = answersTemp[indexAns].prio
-      answersTemp[indexAns] = ans
-    }
-    setAnswers(answersTemp)
-
-    // Update state - OtherWhatAnswers
-    if (ans.id >= 1000) {
-      if (indexOth === -1) {
-        // Answer is not found in State
-        ans.prio = answersTemp[indexAns].prio
-        otherWhatAnswersTemp[otherWhatAnswersTemp.length] = ans
+      let ans = {}
+      ans.note = e.target.value
+      ans.id = question.id
+      ans.phase = question.phase
+      ans.pageName = question.pageName
+  
+      let answersTemp = [...answers]
+      let indexAns = answersTemp.findIndex(x => parseInt(x.id) === parseInt(ans.id))
+  
+      let otherWhatAnswersTemp = [...otherWhatAnswers]
+      let indexOth = otherWhatAnswersTemp.findIndex(x => parseInt(x.id) === parseInt(ans.id))
+  
+      if (ans.id >= 1000) {
+        ans.q = otherWhatAnswersTemp[indexOth].q
+        ans.mod = true
         } else {
-        // Answer is found in State
-        otherWhatAnswersTemp[indexOth] = ans
+        ans.q = question.q
+        ans.mod = true
       }
-      setOtherWhatAnswers(otherWhatAnswersTemp)
+  
+      // Update state - Answers
+      if (indexAns === -1) {
+        // Answer is not found in State
+        ans.prio = 0
+        answersTemp[answersTemp.length] = ans
+      } else {
+        // Answer is found in State
+        ans.prio = answersTemp[indexAns].prio
+        answersTemp[indexAns] = ans
+      }
+      setAnswers(answersTemp)
+  
+      // Update state - OtherWhatAnswers
+      if (ans.id >= 1000) {
+        if (indexOth === -1) {
+          // Answer is not found in State
+          ans.prio = answersTemp[indexAns].prio
+          otherWhatAnswersTemp[otherWhatAnswersTemp.length] = ans
+          } else {
+          // Answer is found in State
+          otherWhatAnswersTemp[indexOth] = ans
+        }
+        setOtherWhatAnswers(otherWhatAnswersTemp)
+      }
     }
   }
 
@@ -249,41 +253,42 @@ const App = () => {
   // Event handler to record "other what" question / target
   const handlerOtherWhatTarget = (e, answer) => {
     
-    // console.log('START - handlerOtherWhatTarget')
+    const questionForLength = e.target.value
+    console.log('questionForLength',questionForLength.length)
+    // Max length for other what is 30 char
+    if (questionForLength.length < 30 ) {
 
-    const otherWhatTarget = e.target.value
-    let answersTemp = [...answers]
-    let otherWhatAnswersTemp = [...otherWhatAnswers]
-    //console.log('handlerOtherWhatTarget - e.target.value :', e.target.value)
-    //console.log('handlerOtherWhatTarget - answer :', answer)
-    
-    let ans = {}
-    ans.id = answer.id
-    ans.q = otherWhatTarget
-    ans.mod = true
-    ans.pageName = answer.pageName
-    ans.phase = answer.phase
-
-    // Update state - Answers
-    const indexAnswers = answersTemp.findIndex(x => parseInt(x.id) === parseInt(ans.id))
-    if (indexAnswers === -1) {
-      // Answer is not found in State
-      ans.note = answer.note
-      ans.prio = 0
-      answersTemp[answersTemp.length] = ans
-    } else {
-      // Answer is found in State
-      ans.note = answersTemp[indexAnswers].note
-      ans.prio = answersTemp[indexAnswers].prio
-      answersTemp[indexAnswers] = ans
+      const otherWhatTarget = e.target.value
+      let answersTemp = [...answers]
+      let otherWhatAnswersTemp = [...otherWhatAnswers]
+      
+      let ans = {}
+      ans.id = answer.id
+      ans.q = otherWhatTarget
+      ans.mod = true
+      ans.pageName = answer.pageName
+      ans.phase = answer.phase
+  
+      // Update state - Answers
+      const indexAnswers = answersTemp.findIndex(x => parseInt(x.id) === parseInt(ans.id))
+      if (indexAnswers === -1) {
+        // Answer is not found in State
+        ans.note = answer.note
+        ans.prio = 0
+        answersTemp[answersTemp.length] = ans
+      } else {
+        // Answer is found in State
+        ans.note = answersTemp[indexAnswers].note
+        ans.prio = answersTemp[indexAnswers].prio
+        answersTemp[indexAnswers] = ans
+      }
+      setAnswers(answersTemp)
+  
+      // Update state - otherWhatAnswers
+      const indexOtherWhatAnswers = otherWhatAnswersTemp.findIndex(x => parseInt(x.id) === parseInt(ans.id))
+      otherWhatAnswersTemp[indexOtherWhatAnswers] = ans
+      setOtherWhatAnswers(otherWhatAnswersTemp)  
     }
-    setAnswers(answersTemp)
-
-    // Update state - otherWhatAnswers
-    const indexOtherWhatAnswers = otherWhatAnswersTemp.findIndex(x => parseInt(x.id) === parseInt(ans.id))
-    otherWhatAnswersTemp[indexOtherWhatAnswers] = ans
-    setOtherWhatAnswers(otherWhatAnswersTemp)
-
   }
 
 

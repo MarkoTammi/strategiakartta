@@ -16,7 +16,13 @@ const color = {
     MapProcessLight: "#6be7b8",
     MapResourcesLight: "#77abf7",
     //SuuntiaDarkGreen
-    MapReady : "#47aeb6"
+    MapReady : "#47aeb6",
+
+    // Answer options from light (nothing to develop) to dark (lot to develop)
+    ans1: "#c3dfe4",
+    ans2: "#abd3b9",
+    ans3: "#7fbfc8",
+    ans4: "#47aeb6"
 }
 
 export default color

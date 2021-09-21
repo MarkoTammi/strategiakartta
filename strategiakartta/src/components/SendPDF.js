@@ -16,6 +16,7 @@ import Button from "react-bootstrap/Button"
 // text files
 //import generalTxt from "../txtFiles/generalTxt"
 import buttonTxt from "../txtFiles/buttonTxt"
+import pdfDocumentTxt from "../txtFiles/pdfDocumentTxt"
 
 
 
@@ -38,7 +39,11 @@ const SendPdf = (props) => {
                     <Col>{usr.username}</Col>
                 </Row>
 
-                <Row className="justify-content-md-center">
+                <Row>
+                    {pdfDocumentTxt[props.version][1010]}
+                </Row>
+
+                <Row className="justify-content-md-center" style={{ margin: 20 }}>
                     <Col xs>
                         <Button className="btn btn-secondary m-2" onClick={props.handlerBackwards}>{buttonTxt[props.version][1001]}</Button>
                     </Col>
