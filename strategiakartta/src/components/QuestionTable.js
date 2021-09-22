@@ -25,6 +25,13 @@ import mapPageTxt from "../txtFiles/mapPageTxt"
 import color from "../services/color"
 
 
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import Tooltip from '@mui/material/Tooltip';
+
 
 const QuestionTable = (props) => {
 
@@ -81,6 +88,67 @@ const QuestionTable = (props) => {
                             </Form>
                         </Col>
 
+                        {/* MUI Radio start */}
+                        <Col>
+                            <Tooltip title={<p style={{ fontSize: 15 }}>{mapPageTxt[props.version]["MapGen"][1001]}</p>} arrow enterDelay={1000}>
+                                <Radio
+                                    checked={displayRadioValue(answer, props.answers, 1)}
+                                    onChange={e => props.handlerRadioButton(e, answer, props.answers)}
+                                    value="1"
+                                    name="radio-buttons"
+                                    inputProps={{ 'aria-label': 'A' }}
+                                    sx={{
+                                        '& .MuiSvgIcon-root': {
+                                            fontSize: 28,
+                                            color: '#c3dfe4',
+                                            '&.Mui-checked': {
+                                                color: '#c3dfe4',
+                                            }
+                                        },
+                                    }}
+                                />
+                            </Tooltip>
+                            <Tooltip title={<p style={{ fontSize: 15 }}>{mapPageTxt[props.version]["MapGen"][1003]}</p>} arrow enterDelay={1000}>
+                                <Radio
+                                    checked={displayRadioValue(answer, props.answers, 3)}
+                                    onChange={e => props.handlerRadioButton(e, answer, props.answers)}
+                                    value="3"
+                                    name="radio-buttons"
+                                    inputProps={{ 'aria-label': 'A' }}
+                                    sx={{
+                                        '& .MuiSvgIcon-root': {
+                                            fontSize: 28,
+                                            color: '#7fbfc8',
+                                            '&.Mui-checked': {
+                                                color: '#7fbfc8',
+                                            }
+                                        },
+                                    }}
+                                />
+                            </Tooltip>
+                            <Tooltip title={<p style={{ fontSize: 15 }}>{mapPageTxt[props.version]["MapGen"][1004]}</p>} arrow enterDelay={1000} >
+                                <Radio
+                                    checked={displayRadioValue(answer, props.answers, 4)}
+                                    onChange={e => props.handlerRadioButton(e, answer, props.answers)}
+                                    value="4"
+                                    name="radio-buttons"
+                                    inputProps={{ 'aria-label': 'B' }}
+                                    sx={{
+                                        '& .MuiSvgIcon-root': {
+                                            fontSize: 28,
+                                            color: '#358288',
+                                            '&.Mui-checked': {
+                                                color: '#358288',
+                                            }
+                                        },
+                                    }}
+                                />
+                            </Tooltip>
+                        </Col>
+                        {/* MUI Radio end */}
+
+
+                        {/* Working other what 
                         <form onSubmit={formSubmit}>
                             <div className="form-check form-check-inline" >
                                 <input
@@ -99,9 +167,9 @@ const QuestionTable = (props) => {
                                     className="form-check-input" value="4" checked={displayRadioValue(answer, props.answers, 4)}
                                     type="radio" name={answer.id} onChange={e => props.handlerRadioButton(e, answer, props.answers)} />
                             </div>
-                        </form>
+                        </form> */}
 
-                        <Col xs={7}>
+                        <Col xs={6}>
                             <Form>
                                 <div className="form-group">
                                     <input onChange={(e) => props.handlerShortNote(e, answer)}
@@ -188,7 +256,67 @@ const QuestionTable = (props) => {
 
                     <Col xs={4}>{question.q}</Col>
 
-                    <form onSubmit={formSubmit}>
+                    {/* MUI Radio start */}
+                    <Col>
+                    <Tooltip title={<p style={{fontSize: 15}}>{mapPageTxt[props.version]["MapGen"][1001]}</p>} arrow enterDelay={1000} >
+                        <Radio
+                            checked={displayRadioValue(question, props.answers, 1)}
+                            onChange={e => props.handlerRadioButton(e, question, props.answers)}
+                            value="1"
+                            name="radio-buttons"
+                            inputProps={{ 'aria-label': 'A' }}
+                            sx={{
+                                '& .MuiSvgIcon-root': {
+                                    fontSize: 28,
+                                    color: '#c3dfe4',
+                                    '&.Mui-checked': {
+                                        color: '#c3dfe4',
+                                    }
+                                },
+                            }}
+                        />
+                        </Tooltip>
+                        <Tooltip title={<p style={{fontSize: 15}}>{mapPageTxt[props.version]["MapGen"][1003]}</p>} arrow enterDelay={1000}>
+                        <Radio
+                            checked={displayRadioValue(question, props.answers, 3)}
+                            onChange={e => props.handlerRadioButton(e, question, props.answers)}
+                            value="3"
+                            name="radio-buttons"
+                            inputProps={{ 'aria-label': 'A' }}
+                            sx={{
+                                '& .MuiSvgIcon-root': {
+                                    fontSize: 28,
+                                    color: '#7fbfc8',
+                                    '&.Mui-checked': {
+                                        color: '#7fbfc8',
+                                    }
+                                },
+                            }}
+                        /></Tooltip>
+                        <Tooltip title={<p style={{fontSize: 15}}>{mapPageTxt[props.version]["MapGen"][1004]}</p>} arrow enterDelay={1000}>
+                        <Radio
+                            checked={displayRadioValue(question, props.answers, 4)}
+                            onChange={e => props.handlerRadioButton(e, question, props.answers)}
+                            value="4"
+                            name="radio-buttons"
+                            inputProps={{ 'aria-label': 'B' }}
+                            sx={{
+                                '& .MuiSvgIcon-root': {
+                                    fontSize: 28,
+                                    color: '#358288',
+                                    '&.Mui-checked': {
+                                        color: '#358288',
+                                    }
+                                },
+                            }}
+                        />
+                        </Tooltip>
+
+                    </Col>
+                    {/* MUI Radio end */}
+
+                    {/* Working */}
+                    {/*    <form onSubmit={formSubmit}>
                         <div className="form-check form-check-inline" >
                             <input
                                 data-toggle="tooltip" title={mapPageTxt[props.version]["MapGen"][1001]}
@@ -206,10 +334,10 @@ const QuestionTable = (props) => {
                                 className="form-check-input" value="4" checked={displayRadioValue(question, props.answers, 4)}
                                 type="radio" name={question.q} onChange={e => props.handlerRadioButton(e, question, props.answers)} />
                         </div>
-                    </form>
+                    </form> */}
 
 
-                    <Col xs={7}>
+                    <Col xs={6}>
                         <Form>
                             <div className="form-group">
                                 <input onChange={(e) => props.handlerShortNote(e, question)} 

@@ -354,6 +354,8 @@ const App = () => {
           user={user}
           handlerUserName={handlerUserName}
           handlerOrganizationName={handlerOrganizationName}
+          handlerModalHelp={handlerModalHelp}
+
         />
       )
     }

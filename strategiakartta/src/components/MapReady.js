@@ -29,7 +29,10 @@ const MapReady = (props) => {
             <HeroElement
                 headerTxt={mapPageTxt[props.version][props.pageName][1010]}
                 subHeaderTxt={mapPageTxt[props.version][props.pageName][1011]}
-                pageName={props.pageName} />
+                pageName={props.pageName} 
+                handlerModalHelp={props.handlerModalHelp}
+                version={props.version}
+                />
 
             <Container>
 
