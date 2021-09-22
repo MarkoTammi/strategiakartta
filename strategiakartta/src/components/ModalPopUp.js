@@ -3,12 +3,20 @@
 // Component to display Modal
 
 import React from "react"
+import { ModalBody } from "react-bootstrap"
+//import { ModalBody } from "react-bootstrap"
 
 import Button from "react-bootstrap/Button"
 import Modal from "react-bootstrap/Modal"
 
 const ModalPopUp = (props) => {
-  
+
+    const getRandomInt = () => {
+        return Math.floor(Math.random() * 100000);
+    }
+    
+    let modalBody = props.modalBody.slice()
+       
     return (
         <Modal
             show={props.showModal}
@@ -20,7 +28,10 @@ const ModalPopUp = (props) => {
             <Modal.Header closeButton>
                 <Modal.Title>{props.modalTitle}</Modal.Title>
             </Modal.Header>
-            <Modal.Body>
+            <ModalBody>
+            {modalBody.map((line) => <p key={getRandomInt()}>{line}</p>)}
+            </ModalBody>
+{/*             <Modal.Body>
                 {props.modalBody1}
             </Modal.Body>
             <Modal.Body>
@@ -28,12 +39,11 @@ const ModalPopUp = (props) => {
             </Modal.Body>
             <Modal.Body>
                 {props.modalBody3}
-            </Modal.Body>
+            </Modal.Body> */}
             <Modal.Footer>
                 <Button variant="secondary" onClick={props.handleClose}>
                     {props.modalButton1}
                 </Button>
-                {/* <Button variant="primary">Understood</Button> */}
             </Modal.Footer>
         </Modal>
     )

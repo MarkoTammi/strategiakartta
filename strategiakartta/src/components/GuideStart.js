@@ -17,7 +17,7 @@ import Tooltip from "react-bootstrap/Tooltip"
 
 
 // text files
-import guideStartTxt from "../txtFiles/guideStartTxt"
+import guideStartTxt from "../txtFiles/helpTxt"
 import buttonTxt from "../txtFiles/buttonTxt"
 
 const StartGuide = (props) => {

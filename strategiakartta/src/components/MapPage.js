@@ -51,7 +51,9 @@ const MapTarget = (props) => {
             <HeroElement
                 headerTxt={mapPageTxt[props.version][props.pageName][1001]}
                 subHeaderTxt={mapPageTxt[props.version][props.pageName][1002]}
-                pageName={props.pageName} />
+                pageName={props.pageName} 
+                handlerModalHelp={props.handlerModalHelp}
+                version={props.version}/>
 
             <Container>
 

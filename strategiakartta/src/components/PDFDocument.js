@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     footer: {
         color: '#47aeb6',
         fontSize: '13px',
-        margin: 40
+        margin: 30
     },
     map: {
         margin: 10,
@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     row: { display: "flex", flexDirection: "row", fontSize: 8, marginLeft: 10, marginTop: 10 },
     column: { display: "flex", flexDirection: "column", flexGrow: 1 },
     th: {
+        fontSize: 10,
         padding: 8,
         color: "#000000",
         fontWeight: 700,
@@ -54,6 +55,7 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 3
       },
       td: {
+        fontSize: 10,
         padding: 4,
         backgroundColor: "#ffffff",
         color: "#000000",
@@ -132,6 +134,12 @@ const displayEmptyCardPDF = () => {
 
 // Build document component
 const PDFDocument = (props) => {
+
+    const today = () => {
+        const d = new Date();
+        const n = d.toLocaleDateString();
+        return n
+    }
 
     let answersTemp = props.answers
     let userTemp = props.user
@@ -252,7 +260,7 @@ const PDFDocument = (props) => {
                     {/* END Prio4*/}
 
                     <View>
-                        <Text style={{ textAlign: 'center', fontSize: 12, marginTop: 15 }}>{pdfDocumentTxt[props.version][1005]}</Text>
+                        <Text style={{ textAlign: 'center', fontSize: 10, marginTop: 15 }}>{pdfDocumentTxt[props.version][1005]}</Text>
                         <Text style={styles.dottedLine}>------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</Text>
                     </View>
 
@@ -280,12 +288,12 @@ const PDFDocument = (props) => {
                     {/* END Prio3*/}
 
                     <View>
-                        <Text style={{ textAlign: 'center', fontSize: 12, marginTop: 15 }}>{pdfDocumentTxt[props.version][1006]}</Text>
+                        <Text style={{ textAlign: 'center', fontSize: 10, marginTop: 15 }}>{pdfDocumentTxt[props.version][1006]}</Text>
                     </View>
                 </View>
 
                 <View>
-                    <Text style={{ fontSize: 12, marginLeft: 20 }}>{userTemp.organization}  /  {userTemp.username}</Text>
+                    <Text style={{ fontSize: 12, marginLeft: 20 }}>{userTemp.organization}  /  {userTemp.username}  /  {today()}</Text>
                 </View>
 
                 <View >

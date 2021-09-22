@@ -24,6 +24,11 @@ const SendPdf = (props) => {
     //(console.log("sendPDF component")
     const usr = props.user
 
+    const today = () => {
+        const d = new Date();
+        const n = d.toLocaleDateString();
+        return n
+    }
 
     return (
         <div style={{ margin: "40px" }}>
@@ -35,8 +40,7 @@ const SendPdf = (props) => {
                     answers={props.answers}
                 />
                 <Row style={{marginTop:15, marginBottom: 30}}>
-                    <Col>{usr.organization}</Col>
-                    <Col>{usr.username}</Col>
+                    {usr.organization}  /  {usr.username}  /  {today()}
                 </Row>
 
                 <Row>

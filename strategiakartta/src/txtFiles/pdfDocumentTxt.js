@@ -11,7 +11,7 @@ const pdfDocumentTxt = {
         1007: "Suuntia - strategisen johtamisen ja kehittämisen digitaalinen työympäristö",
         1008: "'Lataa dokumenttia...'",
         1009: "'Lataa PDF'",
-        1010: "Mikäli huomaat PDF:n latauksen jälkeen, että laatimasi strategiakartta ei mahdu yhdelle A4:lle palaa edellisiin vaiheisiin ja muokkaa sitä. Yhden A4:n idea on helpottaa viestintää henkilöstölle ja muille tärkeille tahoille. Muista priorisointi!",
+        1010: "TÄRKEÄÄ !!! Mikäli huomaat PDF:n latauksen jälkeen, että laatimasi strategiakartta ei mahdu yhdelle A4:lle palaa edellisiin vaiheisiin ja muokkaa sitä. Yhden A4:n idea on helpottaa viestintää henkilöstölle ja muille tärkeille tahoille. Muista priorisointi!",
         
         
         1030: "Strategiakartta auttaa kiteyttämään yhdelle A4:selle organisaation tämänhetkisen tilanteen, tavoitteet ja toiminnan tärkeimmät kehityskohteet.",

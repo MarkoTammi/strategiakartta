@@ -101,7 +101,7 @@ const QuestionTable = (props) => {
                             </div>
                         </form>
 
-                        <Col xs={6}>
+                        <Col xs={7}>
                             <Form>
                                 <div className="form-group">
                                     <input onChange={(e) => props.handlerShortNote(e, answer)}
@@ -209,7 +209,7 @@ const QuestionTable = (props) => {
                     </form>
 
 
-                    <Col xs={6}>
+                    <Col xs={7}>
                         <Form>
                             <div className="form-group">
                                 <input onChange={(e) => props.handlerShortNote(e, question)} 

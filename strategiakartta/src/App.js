@@ -14,7 +14,7 @@ import Container from "react-bootstrap/Container" */
 
 
 // Components
-import GuideStart from "./components/GuideStart"
+//import GuideStart from "./components/GuideStart"
 import MapPage from "./components/MapPage"
 import MapReady from "./components/MapReady"
 import Footer from "./components/Footer"
@@ -25,7 +25,7 @@ import ModalPopUp from './components/ModalPopUp';
 import flowControl from "./services/flowControl"
 
 import generalTxt from "./txtFiles/generalTxt"
-
+import helpTxt from "./txtFiles/helpTxt"
 
 const App = () => {
 
@@ -45,9 +45,10 @@ const App = () => {
   const [otherWhatId, setOtherWhatId] = useState([])
   const [showModal, setShowModal] = useState(false)
   const [modalTitle, setModalTitle] = useState("")
-  const [modalBody1, setModalBody1] = useState("")
+  const [modalBody ,setModalBody] = useState([])
+/*   const [modalBody1, setModalBody1] = useState("")
   const [modalBody2, setModalBody2] = useState("")
-  const [modalBody3, setModalBody3] = useState("")
+  const [modalBody3, setModalBody3] = useState("") */
   const [modalButton1, setModalButton1] = useState("")
   const [user, setUser] = useState({username : "", organization: "", useremail: ""})
 
@@ -75,6 +76,7 @@ const App = () => {
 
   const newEmptyOtherWhat = () => {
     let otherWhatAnswersTemp = [...otherWhatAnswers]
+
     const findId = () => {
       let otherWhatIdTemp = [...otherWhatId]
       let newId = otherWhatIdTemp.length + 1001
@@ -128,13 +130,21 @@ const App = () => {
     // console.log('handlerForward page nro before increment - ' + page)
     let numberOfAnswers = howManyAnswersInPhase()
     //console.log('howManyAnswersInPhase', numberOfAnswers)
-    if (numberOfAnswers === 0 && 
-          (pageName === "MapTarget" || pageName === "MapCustomer" ||
-          pageName === "MapProcess" || pageName === "MapResources")) {
+    if (numberOfAnswers === 0 &&
+      (pageName === "MapTarget" || pageName === "MapCustomer" ||
+        pageName === "MapProcess" || pageName === "MapResources")) {
+
       setModalTitle(generalTxt[version][1002])
-      setModalBody1(generalTxt[version][1003])
+
+      const modalBodyTemp = []
+      modalBodyTemp[0] = generalTxt[version][1003]
+      modalBodyTemp[1] = generalTxt[version][1004]
+      modalBodyTemp[2] = generalTxt[version][1005]
+      setModalBody(modalBodyTemp)
+
+/*       setModalBody1(generalTxt[version][1003])
       setModalBody2(generalTxt[version][1004])
-      setModalBody3(generalTxt[version][1005])
+      setModalBody3(generalTxt[version][1005]) */
       setModalButton1(generalTxt[version][1006])
       setShowModal(true)
     } else {
@@ -254,7 +264,7 @@ const App = () => {
   const handlerOtherWhatTarget = (e, answer) => {
     
     const questionForLength = e.target.value
-    console.log('questionForLength',questionForLength.length)
+    
     // Max length for other what is 30 char
     if (questionForLength.length < 30 ) {
 
@@ -319,10 +329,11 @@ const App = () => {
           handlerOtherWhatTarget={handlerOtherWhatTarget}
           findId={findId}
           newEmptyOtherWhat={newEmptyOtherWhat}
+          handlerModalHelp={handlerModalHelp}
         />
       )
     }
-    if (pageName === "StartGuide") {
+    /* if (pageName === "StartGuide") {
       return (
         <GuideStart
           version={version}
@@ -330,7 +341,7 @@ const App = () => {
           pageName={pageName}
         />
       )
-    }
+    } */
     if (pageName === "MapReady") {
       return (
         <MapReady
@@ -363,10 +374,11 @@ const App = () => {
   const handleClose = () => {
     setShowModal(false)
     setModalTitle("")
-    setModalBody1("")
+/*     setModalBody1("")
     setModalBody2("")
-    setModalBody3("")
+    setModalBody3("") */
     setModalButton1("")
+    setModalBody([])
   }
 
   // Handler to record organization name
@@ -383,6 +395,29 @@ const App = () => {
     setUser({...user, username: usrName})
 }
 
+  // Modal for help guide
+  const handlerModalHelp = () => {
+
+    setModalTitle(helpTxt[version][1100])
+    const modalBodyTemp = []
+    modalBodyTemp[0] = helpTxt[version][1101]
+    modalBodyTemp[1] = helpTxt[version][1102]
+    modalBodyTemp[2] = helpTxt[version][1103]
+    modalBodyTemp[3] = helpTxt[version][1104]
+    modalBodyTemp[4] = helpTxt[version][1105]
+    modalBodyTemp[5] = helpTxt[version][1106]
+    modalBodyTemp[6] = helpTxt[version][1107]
+    modalBodyTemp[7] = helpTxt[version][1108]
+    modalBodyTemp[8] = helpTxt[version][1109]
+    modalBodyTemp[9] = helpTxt[version][1110]
+
+
+    setModalBody(modalBodyTemp)
+    setModalButton1(generalTxt[version][1006])
+    setShowModal(true)
+
+  }
+
   return (
     <div>
 
@@ -390,10 +425,11 @@ const App = () => {
         showModal={showModal}
         handleClose={handleClose}
         modalTitle={modalTitle}
-        modalBody1={modalBody1}
+/*         modalBody1={modalBody1}
         modalBody2={modalBody2}
-        modalBody3={modalBody3}
+        modalBody3={modalBody3} */
         modalButton1={modalButton1}
+        modalBody={modalBody}
         />
 
       {/* display page specific content */}
