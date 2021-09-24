@@ -75,13 +75,28 @@ const MapReady = (props) => {
                             </Col>
                         </Row>
                     </div>
+                    <div className="form-group">
+                        <Row style={{ marginTop: '20px' }}>
+                            <Col xs={2}>
+                                {mapPageTxt[props.version][props.pageName][1017]}
+                            </Col>
+                            <Col>
+                                <input
+                                    onChange={(e) => props.handlerEmail(e)}
+                                    type="text" className="form-control"
+                                    placeholder={mapPageTxt[props.version][props.pageName][1019]}
+                                    value={userTemp.useremail}
+                                />
+                            </Col>
+                        </Row>
+                    </div>
                 
-
+                <p style={{}}>{mapPageTxt[props.version][props.pageName][1018]}</p>
 
                 <Row className="justify-content-md-center">
                     <Col xs>
                         <Button className="btn btn-secondary m-2" onClick={props.handlerBackwards}>{buttonTxt[props.version][1001]}</Button>
-                        <Button onClick={props.handlerForward}>{buttonTxt[props.version][1005]}</Button>
+                        <Button onClick={props.handlerMapReadyForward}>{buttonTxt[props.version][1005]}</Button>
                     </Col>
                 </Row>
 

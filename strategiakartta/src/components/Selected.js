@@ -200,7 +200,7 @@ const Selected = (props) => {
     }
 
     return (
-        <div style={{margin: '20px, 0, 20px', border: '1px solid grey', borderRadius: '5px', padding: '20px' }}>
+        <div style={{margin: '20px, 0, 0px', border: '1px solid grey', borderRadius: '5px', padding: '20px 20px 0 20px' }}>
             <Row style={{borderBottom: '1px dashed', marginBottom: '20px'}}>
                 <Col className="text-center"><h5>{mapPageTxt[props.version]["MapGen"][1023]}</h5></Col>
                 <Col className="text-center"><h5>{mapPageTxt[props.version]["MapGen"][1022]}</h5></Col>
@@ -214,7 +214,7 @@ const Selected = (props) => {
                 </Row>
             )}
             <br></br>
-            <p style={{textAlign:'center', borderBottom: '1px dashed'}}>Paljon kehitettävää</p>
+            <p style={{textAlign:'center', borderBottom: '1px dashed'}}>{mapPageTxt[props.version]["MapGen"][1004]}</p>
 
             {allPrio3.map((oneRowAnswers) =>
                 <Row key={getRandomInt()}>
@@ -222,7 +222,7 @@ const Selected = (props) => {
                 </Row>
             )}
             <br></br>
-            <p style={{textAlign:'center'}}>Melko paljon kehitettävää</p>
+            <p style={{textAlign:'center', marginBottom: '0px'}}>{mapPageTxt[props.version]["MapGen"][1003]}</p>
 
         </div>
     )

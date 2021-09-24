@@ -3,19 +3,9 @@
 
 import React, { } from "react"
 
-//import Table from 'react-bootstrap/Table'
 import Form from 'react-bootstrap/Form'
-//import InputGroup from 'react-bootstrap/InputGroup'
-//import FormControl from 'react-bootstrap/FormControl'
-//import OverlayTrigger from 'react-bootstrap/Overlay'
-//import Tooltip from 'react-bootstrap/Tooltip'
-//import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-
-//import { faSquare } from "@fortawesome/free-regular-svg-icons"
-//import { faCheck } from "@fortawesome/free-solid-svg-icons"
-//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 // Text files
 import mapOptionsTxt from "../txtFiles/mapOptionsTxt"
@@ -26,52 +16,25 @@ import color from "../services/color"
 
 
 import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
 import Tooltip from '@mui/material/Tooltip';
 
 
 const QuestionTable = (props) => {
 
     // Display "Other what" rows
-    const displayOtherWhat = (pageName, otherWhatAnswers, newEmptyOtherWhat) => {
-    //const displayOtherWhat = (pageName, otherWhatAnswers, setOtherWhatAnswers, newEmptyOtherWhat) => {
-
-        //console.log('START - displayOtherWhat')
-/* 
-        const findPhase = (pageName) => {
-            switch (pageName) {
-                case "MapTarget":
-                  return 1
-                  break
-                case "MapCustomer":
-                  return 2
-                  break
-                case "MapProcess":
-                  return 3
-                  break
-                case "MapResources":
-                  return 4
-                  break
-            }
-        } */
+    const displayOtherWhat = (pageName, otherWhatAnswers) => {
 
         let otherWhatAnswersTemp = [...otherWhatAnswers]
         let otherWhatToDisplay = []
          
-        // otherWhatToDisplay = otherWhatAnswersTemp.filter(answer => answer.pageName === pageName)
         otherWhatToDisplay = otherWhatAnswersTemp.filter(answer => answer.pageName === pageName)
         //console.log('otherWhatToDisplay', otherWhatToDisplay)
 
+        // Add new empty other what if not visible
         let emptyRowInd = otherWhatToDisplay.findIndex(row => row.mod === false)
-        //console.log('emptyRowInd', emptyRowInd)
-
         if (emptyRowInd === -1) {
-            newEmptyOtherWhat()
+            props.newEmptyOtherWhat()
         }
-        
 
         return (
             <div>
@@ -203,21 +166,23 @@ const QuestionTable = (props) => {
         }
     }
 
-    // Display radio value
+    // Display question table radio button value
     const displayRadioValue = (question, answers, value) => {
         //console.log("displayRadioValue  :")
         let answersTemp = [...answers]
         var index = answersTemp.findIndex(x => x.id === question.id)
         //console.log('index: ', index)
         if (index === -1) {
-            // Answer is not found in Answers State
-            return ""
+            // Answer is not found in Answers State "not checked"
+            return false
         } else {
             // Answer is found in Answers State
             if (parseInt(value) === parseInt(answersTemp[index].prio)) {
-                return "checked"
+                // "checked"
+                return true
             } else {
-                return ""
+                // "not checked"
+                return false
             }
         }
     }
@@ -236,10 +201,10 @@ const QuestionTable = (props) => {
         }
     }
 
-    const formSubmit = (event) => {
+/*     const formSubmit = (event) => {
         event.preventDefault();
         console.log("formSubmit", event.target)
-    }
+    } */
 
 
 
@@ -247,7 +212,7 @@ const QuestionTable = (props) => {
         <div>
 
             <Row style={{ backgroundColor: `${color[props.pageName]}`, height: 45, padding: "13px", margin: "0 0 20px" }}>
-                <Col md="auto"><h5>{mapPageTxt[props.version][props.pageName][1000]}</h5></Col>
+                <Col md={4}><h5>{mapPageTxt[props.version][props.pageName][1000]}</h5></Col>
                 <Col>{mapPageTxt[props.version]["MapGen"][1010]}</Col>
             </Row>
 
@@ -351,10 +316,9 @@ const QuestionTable = (props) => {
                 </Row>
             )}
 
-            {displayOtherWhat(props.pageName, props.otherWhatAnswers, props.newEmptyOtherWhat)}
+            {displayOtherWhat(props.pageName, props.otherWhatAnswers)}
 
-            {/* {displayOtherWhat(props.pageName, props.otherWhatAnswers, props.setOtherWhatAnswers, props.newEmptyOtherWhat)} */}
-
+            {/* {displayOtherWhat(props.pageName, props.otherWhatAnswers, props.newEmptyOtherWhat)} */}
 
         </div>
     )

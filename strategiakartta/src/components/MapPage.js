@@ -1,4 +1,4 @@
-// Kehityskartta phase component
+// Strategymap phase component
 
 
 import React, {  } from "react"
@@ -72,7 +72,6 @@ const MapTarget = (props) => {
                     pageName={props.pageName}
                     answers={props.answers}
                     otherWhatAnswers={props.otherWhatAnswers}
-                    setOtherWhatAnswers={props.setOtherWhatAnswers}
                     handlerShortNote={props.handlerShortNote}
                     handlerRadioButton={props.handlerRadioButton}
                     handlerOtherWhatTarget={props.handlerOtherWhatTarget}

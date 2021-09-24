@@ -27,7 +27,7 @@ const HeroElement = (props) => {
           <Col xs={10}>
             <h3>{props.headerTxt}</h3>
           </Col>
-          <Tooltip title={generalTxt[props.version][1010]}>
+          <Tooltip title={<p style={{fontSize: 15}}>{generalTxt[props.version][1010]}</p>} arrow enterDelay={1000} placement="left" >
             <Col>
               <FontAwesomeIcon icon={faInfoCircle} size='3x' color='#ffffff' onClick={props.handlerModalHelp} />
             </Col>

@@ -6,12 +6,12 @@ const pdfDocumentTxt = {
         1002: "Toiminnan ja prosessien kehitystarpeet",
         1003: "Asiakkaiden odotukset",
         1004: "Toiminnan tavoitteet",
-        1005: "Paljon kehitettävää",
-        1006: "Melko paljon kehitettävää",
+        1005: "Tärkeä kehityskohde",
+        1006: "Kehityskohde",
         1007: "Suuntia - strategisen johtamisen ja kehittämisen digitaalinen työympäristö",
         1008: "'Lataa dokumenttia...'",
         1009: "'Lataa PDF'",
-        1010: "TÄRKEÄÄ !!! Mikäli huomaat PDF:n latauksen jälkeen, että laatimasi strategiakartta ei mahdu yhdelle A4:lle palaa edellisiin vaiheisiin ja muokkaa sitä. Yhden A4:n idea on helpottaa viestintää henkilöstölle ja muille tärkeille tahoille. Muista priorisointi!",
+        1010: "TÄRKEÄÄ !!! Mikäli huomaat PDF:n latauksen jälkeen, että laatimasi strategiakartta ei mahdu yhdelle A4:lle palaa edellisiin vaiheisiin ja muokkaa sitä. Yhden A4:n idea on helpottaa viestintää työyhteisössä ja muille tärkeille tahoille. Muista priorisointi!",
         
         
         1030: "Strategiakartta auttaa kiteyttämään yhdelle A4:selle organisaation tämänhetkisen tilanteen, tavoitteet ja toiminnan tärkeimmät kehityskohteet.",

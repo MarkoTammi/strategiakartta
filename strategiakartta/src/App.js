@@ -141,15 +141,34 @@ const App = () => {
       modalBodyTemp[1] = generalTxt[version][1004]
       modalBodyTemp[2] = generalTxt[version][1005]
       setModalBody(modalBodyTemp)
-
-/*       setModalBody1(generalTxt[version][1003])
-      setModalBody2(generalTxt[version][1004])
-      setModalBody3(generalTxt[version][1005]) */
       setModalButton1(generalTxt[version][1006])
       setShowModal(true)
     } else {
       setShowMap(true)
       setPage(page + 1)
+    }
+  }
+
+  // Event handler for forward button at MapReady page
+
+  const handlerMapReadyForward = () => {
+    // Check that org, name and email are correct
+    if (pageName === "MapReady") {
+      if (user.username.length === 0 || user.organization.length === 0 ||
+        !(user.useremail.includes('@')) || !(user.useremail.includes('.'))) {
+
+        setModalTitle(generalTxt[version][1020])
+
+        const modalBodyTemp = []
+        modalBodyTemp[0] = generalTxt[version][1021]
+        modalBodyTemp[1] = generalTxt[version][1022]
+        modalBodyTemp[2] = generalTxt[version][1023]
+        setModalBody(modalBodyTemp)
+        setModalButton1(generalTxt[version][1006])
+        setShowModal(true) 
+      }  else {
+        setPage(page + 1)
+      }
     }
   }
 
@@ -322,7 +341,6 @@ const App = () => {
           pageName={pageName}
           answers={answers}
           otherWhatAnswers={otherWhatAnswers}
-          // setOtherWhatAnswers={setOtherWhatAnswers}
           handlerShortNote={handlerShortNote}
           handlerRadioButton={handlerRadioButton}
           showMap={showMap}
@@ -348,12 +366,13 @@ const App = () => {
           answers={answers}
           version={version}
           handlerBackwards={handlerBackwards}
-          handlerForward={handlerForward}
+          handlerMapReadyForward={handlerMapReadyForward}
           pageName={pageName}
           showMap={showMap}
           user={user}
           handlerUserName={handlerUserName}
           handlerOrganizationName={handlerOrganizationName}
+          handlerEmail={handlerEmail}
           handlerModalHelp={handlerModalHelp}
 
         />
@@ -376,9 +395,6 @@ const App = () => {
   const handleClose = () => {
     setShowModal(false)
     setModalTitle("")
-/*     setModalBody1("")
-    setModalBody2("")
-    setModalBody3("") */
     setModalButton1("")
     setModalBody([])
   }
@@ -396,6 +412,12 @@ const App = () => {
     const usrName = e.target.value
     setUser({...user, username: usrName})
 }
+
+  // Handler to record person email
+  const handlerEmail = (e) => {
+    const email = e.target.value
+    setUser({...user, useremail: email})
+  }
 
   // Modal for help guide
   const handlerModalHelp = () => {
@@ -422,14 +444,10 @@ const App = () => {
 
   return (
     <div>
-
       <ModalPopUp 
         showModal={showModal}
         handleClose={handleClose}
         modalTitle={modalTitle}
-/*         modalBody1={modalBody1}
-        modalBody2={modalBody2}
-        modalBody3={modalBody3} */
         modalButton1={modalButton1}
         modalBody={modalBody}
         />
